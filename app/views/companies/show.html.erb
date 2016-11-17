@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @company.company_name %>
+</p>
+
+<p>
+  <strong>Company address:</strong>
+  <%= @company.company_address %>
+</p>
+
+<p>
+  <strong>Contact no:</strong>
+  <%= @company.contact_no %>
+</p>
+
+<p>
+  <strong>Company reference:</strong>
+  <%= @company.company_reference %>
+</p>
+
+<p>
+  <strong>Previous amount:</strong>
+  <%= @company.previous_amount %>
+</p>
+
+<p>
+  <strong>Net balance:</strong>
+  <%= @company.net_balance %>
+</p>
+
+<p>
+  <strong>Received amount:</strong>
+  <%= @company.received_amount %>
+</p>
+
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>

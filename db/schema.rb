@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117092413) do
+ActiveRecord::Schema.define(version: 20161117101102) do
+
+  create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "company_name"
+    t.text     "company_address",   limit: 65535
+    t.string   "contact_no"
+    t.string   "company_reference"
+    t.decimal  "previous_amount",                 precision: 10
+    t.decimal  "net_balance",                     precision: 10
+    t.decimal  "received_amount",                 precision: 10
+    t.integer  "user_id"
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.index ["user_id"], name: "index_companies_on_user_id", using: :btree
+  end
+
+  create_table "trucks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "truck_no"
+    t.string   "truck_driver"
+    t.string   "driver_no"
+    t.datetime "day_start"
+    t.datetime "day_off"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["user_id"], name: "index_trucks_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "email",                  default: "", null: false
@@ -30,4 +56,6 @@ ActiveRecord::Schema.define(version: 20161117092413) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "companies", "users"
+  add_foreign_key "trucks", "users"
 end

@@ -1,0 +1,42 @@
+<%= form_for(truck) do |f| %>
+  <% if truck.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(truck.errors.count, "error") %> prohibited this truck from being saved:</h2>
+
+      <ul>
+      <% truck.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :truck_no %>
+    <%= f.text_field :truck_no %>
+  </div>
+
+  <div class="field">
+    <%= f.label :truck_driver %>
+    <%= f.text_field :truck_driver %>
+  </div>
+
+  <div class="field">
+    <%= f.label :driver_no %>
+    <%= f.text_field :driver_no %>
+  </div>
+
+  <div class="field">
+    <%= f.label :day_start %>
+    <%= f.datetime_select :day_start %>
+  </div>
+
+  <div class="field">
+    <%= f.label :day_off %>
+    <%= f.datetime_select :day_off %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

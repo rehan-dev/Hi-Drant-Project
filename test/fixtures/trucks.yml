@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  truck_no: MyString
+  truck_driver: MyString
+  driver_no: MyString
+  day_start: 2016-11-17 15:02:28
+  day_off: 2016-11-17 15:02:28
+
+two:
+  truck_no: MyString
+  truck_driver: MyString
+  driver_no: MyString
+  day_start: 2016-11-17 15:02:28
+  day_off: 2016-11-17 15:02:28

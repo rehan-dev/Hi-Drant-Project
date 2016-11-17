@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_name: MyString
+  company_address: MyText
+  contact_no: MyString
+  company_reference: MyString
+  previous_amount: 9.99
+  net_balance: 9.99
+  received_amount: 9.99
+
+two:
+  company_name: MyString
+  company_address: MyText
+  contact_no: MyString
+  company_reference: MyString
+  previous_amount: 9.99
+  net_balance: 9.99
+  received_amount: 9.99
