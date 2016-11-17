@@ -16,3 +16,95 @@
 
 @import 'bootstrap';
 @import 'bootstrap-sprockets';
+
+@font-face {
+  font-family: 'Montserrat', sans-serif;
+  src: url(/public/Montserrat-Regular.ttf);
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #F9F9F9;
+  h1, h2, h3, h4, h5, h6, p, li, ul{
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+.main-header {
+  background-color: #fff;
+  margin-top: 20px;
+  margin-right: 25px;
+  margin-left: 25px;
+  margin-bottom: 20px;
+  border: 1px solid #f2f2f2;
+  box-shadow: 0 1px 0 0 rgba(0,0,0,.05),0 2px 4px 0 rgba(0,0,0,.06);
+}
+
+.truck-module{
+  background-image: image-url('water-truck.svg');
+  background-repeat: no-repeat;
+  background-size: 203px;
+  background-position-x: 18px;
+  background-position-y: -39px;
+  background-color: #f2f2f2;
+  margin-bottom: 20px;
+  height: 124px;
+  margin-left: 20px;
+  border-radius: 1px;
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 2px 14px 0 rgba(0, 0, 0, 0.06);
+  .truck-text{
+    padding-top: 40px;
+  }
+}
+
+.cc-module{
+  background-image: image-url('factory.svg');
+  background-repeat: no-repeat;
+  background-size: 158px;
+  background-position-x: 35px;
+  background-position-y: -3px;
+  background-color: #f2f2f2;
+  margin-bottom: 20px;
+  height: 124px;
+  margin-left: 20px;
+  border-radius: 1px;
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 2px 14px 0 rgba(0, 0, 0, 0.06);
+  .cc-text{
+    padding-top: 40px;
+  }
+}
+
+.bill-module{
+  background-image: image-url('billentry.svg');
+  background-repeat: no-repeat;
+  background-size: 119px;
+  background-position-x: 55px;
+  background-position-y: 3px;
+  background-color: #f2f2f2;
+  margin-bottom: 20px;
+  height: 124px;
+  margin-left: 20px;
+  border-radius: 1px;
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 2px 14px 0 rgba(0, 0, 0, 0.06);
+  .bill-text{
+    padding-top: 40px;
+  }
+}
+
+.report-module{
+  background-image: image-url('report.svg');
+  background-repeat: no-repeat;
+  background-size: 132px;
+  background-position-x: 53px;
+  background-position-y: 4px;
+  background-color: #f2f2f2;
+  margin-bottom: 20px;
+  height: 124px;
+  margin-left: 20px;
+  border-radius: 1px;
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 2px 14px 0 rgba(0, 0, 0, 0.06);
+  .report-text{
+    padding-top: 40px;
+  }
+}
+
