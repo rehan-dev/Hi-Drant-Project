@@ -1,29 +1,38 @@
 <div class="row">
-  <div class="col-md-12 text-center">
-    <%= image_tag 'logo.png', alt: 'Water Hi-Drant Project' %>
-    <h1>Water Hi-Drant Project</h1>
+  <div class="col-md-3 text-center">
+    <%= link_to trucks_path do %>
+      <div class="truck-module">
+      </div>
+      <h3 class="truck-text">Truck Entry</h3>
+    <% end %>
+  </div>
+  <div class="col-md-3 text-center">
+    <%= link_to companies_path do %>
+      <div class="cc-module">
+      </div>
+      <h3 class="cc-text">Company Entry</h3>
+    <% end %>
+  </div>
+  <div class="col-md-3 text-center">
+    <%=link_to billentries_path do %>
+    <div class="bill-module">
+    </div>
+    <h3 class="bill-text">Bill Entry</h3>
+    <% end %>
+  </div>
+  <div class="col-md-3 text-center">
+    <div class="report-module">
+    </div>
+    <h3 class="report-text">Reports</h3>
   </div>
 </div>
 
-<row>
-  <div class="col-md-3">
-    <div class="truck-module text-center">
-      <h3 class="truck-text">Truck Entry</h3>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 centered m-t-m text-center">
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <div class="exit">
+        </div>
+      <% end %>
+      <h3 class="exit-text">Exit</h3>
     </div>
   </div>
-  <div class="col-md-3">
-    <div class="cc-module text-center">
-      <h3 class="cc-text">Client / Company Entry</h3>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="bill-module text-center">
-      <h3 class="bill-text">Bill Entry</h3>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="report-module text-center">
-      <h3 class="report-text">Reports</h3>
-    </div>
-  </div>
-</row>

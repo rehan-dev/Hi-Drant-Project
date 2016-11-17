@@ -17,6 +17,8 @@
 @import 'bootstrap';
 @import 'bootstrap-sprockets';
 
+$h3_color: #777777;
+
 @font-face {
   font-family: 'Montserrat', sans-serif;
   src: url(/public/Montserrat-Regular.ttf);
@@ -28,8 +30,14 @@ body {
   h1, h2, h3, h4, h5, h6, p, li, ul{
     font-family: 'Montserrat', sans-serif;
   }
+  a:hover {
+    text-decoration: none;
+  }
 }
 
+.m-t-m{
+  margin-top: 20px;
+}
 .main-header {
   background-color: #fff;
   margin-top: 20px;
@@ -50,11 +58,13 @@ body {
   margin-bottom: 20px;
   height: 124px;
   margin-left: 20px;
-  border-radius: 1px;
+  border-radius: 14px;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 2px 14px 0 rgba(0, 0, 0, 0.06);
-  .truck-text{
-    padding-top: 40px;
-  }
+}
+.truck-text{
+  font-size: 1.7em;
+  font-weight: 800;
+  color: $h3_color;
 }
 
 .cc-module{
@@ -67,11 +77,13 @@ body {
   margin-bottom: 20px;
   height: 124px;
   margin-left: 20px;
-  border-radius: 1px;
+  border-radius: 14px;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 2px 14px 0 rgba(0, 0, 0, 0.06);
-  .cc-text{
-    padding-top: 40px;
-  }
+}
+.cc-text{
+  font-size: 1.7em;
+  font-weight: 800;
+  color: $h3_color;
 }
 
 .bill-module{
@@ -84,11 +96,13 @@ body {
   margin-bottom: 20px;
   height: 124px;
   margin-left: 20px;
-  border-radius: 1px;
+  border-radius: 14px;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 2px 14px 0 rgba(0, 0, 0, 0.06);
-  .bill-text{
-    padding-top: 40px;
-  }
+}
+.bill-text{
+  font-size: 1.7em;
+  font-weight: 800;
+  color: $h3_color;
 }
 
 .report-module{
@@ -101,10 +115,34 @@ body {
   margin-bottom: 20px;
   height: 124px;
   margin-left: 20px;
-  border-radius: 1px;
+  border-radius: 14px;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 2px 14px 0 rgba(0, 0, 0, 0.06);
-  .report-text{
-    padding-top: 40px;
-  }
+}
+.report-text{
+  font-size: 1.7em;
+  font-weight: 800;
+  color: $h3_color;
 }
 
+.exit {
+  background-image: image-url('exit.svg');
+  background-repeat: no-repeat;
+  background-size: 120px;
+  background-position-x: 21px;
+  background-position-y: 4px;
+  background-color: #f2f2f2;
+  margin-bottom: 20px;
+  height: 124px;
+  margin-left: 111px;
+  margin-right: 102px;
+  border-radius: 14px;
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 2px 14px 0 rgba(0, 0, 0, 0.06);
+}
+.exit:hover{
+  background-color: rgba(9, 9, 9, 0.42);
+}
+.exit-text{
+  font-size: 1.7em;
+  font-weight: 800;
+  color: $h3_color;
+}
