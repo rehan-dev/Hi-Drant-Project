@@ -1,0 +1,2 @@
+class Billentry < ApplicationRecord
+end

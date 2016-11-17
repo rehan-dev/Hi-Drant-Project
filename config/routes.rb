@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :billentries
   resources :companies
   resources :trucks
   root to: 'welcome#index'

@@ -1,0 +1,1 @@
+json.array! @billentries, partial: 'billentries/billentry', as: :billentry

@@ -1,0 +1,1 @@
+json.partial! "billentries/billentry", billentry: @billentry

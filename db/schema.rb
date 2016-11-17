@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117101102) do
+ActiveRecord::Schema.define(version: 20161117115607) do
+
+  create_table "billentries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "truck_no"
+    t.string   "company_name"
+    t.string   "address"
+    t.datetime "time_arrive"
+    t.datetime "time_departure"
+    t.date     "current_date"
+    t.decimal  "supply_rate",          precision: 10
+    t.decimal  "weight",               precision: 10
+    t.decimal  "previous_amount",      precision: 10
+    t.decimal  "current_total_amount", precision: 10
+    t.decimal  "recieved_amount",      precision: 10
+    t.decimal  "net_balance",          precision: 10
+    t.decimal  "total_amount",         precision: 10
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_billentries_on_user_id", using: :btree
+  end
 
   create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company_name"
@@ -56,6 +76,7 @@ ActiveRecord::Schema.define(version: 20161117101102) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "billentries", "users"
   add_foreign_key "companies", "users"
   add_foreign_key "trucks", "users"
 end

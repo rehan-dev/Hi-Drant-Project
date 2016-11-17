@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Billentries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Truck no</th>
+      <th>Company name</th>
+      <th>Address</th>
+      <th>Time arrive</th>
+      <th>Time departure</th>
+      <th>Current date</th>
+      <th>Supply rate</th>
+      <th>Weight</th>
+      <th>Previous amount</th>
+      <th>Current total amount</th>
+      <th>Recieved amount</th>
+      <th>Net balance</th>
+      <th>Total amount</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @billentries.each do |billentry| %>
+      <tr>
+        <td><%= billentry.truck_no %></td>
+        <td><%= billentry.company_name %></td>
+        <td><%= billentry.address %></td>
+        <td><%= billentry.time_arrive %></td>
+        <td><%= billentry.time_departure %></td>
+        <td><%= billentry.current_date %></td>
+        <td><%= billentry.supply_rate %></td>
+        <td><%= billentry.weight %></td>
+        <td><%= billentry.previous_amount %></td>
+        <td><%= billentry.current_total_amount %></td>
+        <td><%= billentry.recieved_amount %></td>
+        <td><%= billentry.net_balance %></td>
+        <td><%= billentry.total_amount %></td>
+        <td><%= link_to 'Show', billentry %></td>
+        <td><%= link_to 'Edit', edit_billentry_path(billentry) %></td>
+        <td><%= link_to 'Destroy', billentry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Billentry', new_billentry_path %>

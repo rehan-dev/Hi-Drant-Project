@@ -1,0 +1,2 @@
+json.extract! billentry, :id, :truck_no, :company_name, :address, :time_arrive, :time_departure, :current_date, :supply_rate, :weight, :previous_amount, :current_total_amount, :recieved_amount, :net_balance, :total_amount, :created_at, :updated_at
+json.url billentry_url(billentry, format: :json)

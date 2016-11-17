@@ -1,0 +1,82 @@
+<%= form_for(billentry) do |f| %>
+  <% if billentry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(billentry.errors.count, "error") %> prohibited this billentry from being saved:</h2>
+
+      <ul>
+      <% billentry.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :truck_no %>
+    <%= f.text_field :truck_no %>
+  </div>
+
+  <div class="field">
+    <%= f.label :company_name %>
+    <%= f.text_field :company_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :time_arrive %>
+    <%= f.datetime_select :time_arrive %>
+  </div>
+
+  <div class="field">
+    <%= f.label :time_departure %>
+    <%= f.datetime_select :time_departure %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_date %>
+    <%= f.date_select :current_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :supply_rate %>
+    <%= f.text_field :supply_rate %>
+  </div>
+
+  <div class="field">
+    <%= f.label :weight %>
+    <%= f.text_field :weight %>
+  </div>
+
+  <div class="field">
+    <%= f.label :previous_amount %>
+    <%= f.text_field :previous_amount %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_total_amount %>
+    <%= f.text_field :current_total_amount %>
+  </div>
+
+  <div class="field">
+    <%= f.label :recieved_amount %>
+    <%= f.text_field :recieved_amount %>
+  </div>
+
+  <div class="field">
+    <%= f.label :net_balance %>
+    <%= f.text_field :net_balance %>
+  </div>
+
+  <div class="field">
+    <%= f.label :total_amount %>
+    <%= f.text_field :total_amount %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

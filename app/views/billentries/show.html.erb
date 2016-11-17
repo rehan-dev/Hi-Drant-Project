@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Truck no:</strong>
+  <%= @billentry.truck_no %>
+</p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @billentry.company_name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @billentry.address %>
+</p>
+
+<p>
+  <strong>Time arrive:</strong>
+  <%= @billentry.time_arrive %>
+</p>
+
+<p>
+  <strong>Time departure:</strong>
+  <%= @billentry.time_departure %>
+</p>
+
+<p>
+  <strong>Current date:</strong>
+  <%= @billentry.current_date %>
+</p>
+
+<p>
+  <strong>Supply rate:</strong>
+  <%= @billentry.supply_rate %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @billentry.weight %>
+</p>
+
+<p>
+  <strong>Previous amount:</strong>
+  <%= @billentry.previous_amount %>
+</p>
+
+<p>
+  <strong>Current total amount:</strong>
+  <%= @billentry.current_total_amount %>
+</p>
+
+<p>
+  <strong>Recieved amount:</strong>
+  <%= @billentry.recieved_amount %>
+</p>
+
+<p>
+  <strong>Net balance:</strong>
+  <%= @billentry.net_balance %>
+</p>
+
+<p>
+  <strong>Total amount:</strong>
+  <%= @billentry.total_amount %>
+</p>
+
+<%= link_to 'Edit', edit_billentry_path(@billentry) %> |
+<%= link_to 'Back', billentries_path %>

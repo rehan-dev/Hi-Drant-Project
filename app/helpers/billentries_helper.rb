@@ -1,0 +1,2 @@
+module BillentriesHelper
+end
