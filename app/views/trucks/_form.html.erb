@@ -10,33 +10,52 @@
       </ul>
     </div>
   <% end %>
+    <div class="form-group">
+      <div class="row">
 
-  <div class="field">
-    <%= f.label :truck_no %>
-    <%= f.text_field :truck_no %>
-  </div>
+        <div class="col-md-4">
+          <div class="field">
+            <%= f.label :truck_no %>
+            <%= f.text_field :truck_no, class: "form-control", required: :true, style: "text-transform: uppercase;", maxlength: "8", placeholder: "Truck No"%>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :truck_driver %>
-    <%= f.text_field :truck_driver %>
-  </div>
+        <div class="col-md-4">
+          <div class="field">
+            <%= f.label :truck_driver %> (Optional)
+            <%= f.text_field :truck_driver, class: "form-control", placeholder: "Truck Driver Name"%>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :driver_no %>
-    <%= f.text_field :driver_no %>
-  </div>
-
-  <div class="field">
-    <%= f.label :day_start %>
-    <%= f.datetime_select :day_start %>
-  </div>
-
-  <div class="field">
-    <%= f.label :day_off %>
-    <%= f.datetime_select :day_off %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+        <div class="col-md-4">
+          <div class="field">
+            <%= f.label :driver_no %> (Optional)
+            <%= f.text_field :driver_no, class: "form-control", maxlength:"11" %>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="field">
+            <%= f.label :day_start %>
+            <%= f.collection_select :day_start, Daytime.all, :day_start, :day_start, {include_blank: 'Choice Day Start Time'}, { class: "form-control", required: :true }  %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="field ">
+            <%= f.label :day_off %>
+            <%= f.collection_select :day_off, Daytime.all, :day_start, :day_start, {include_blank: 'Choice Day Off Time'}, { class: "form-control", required: :true }  %>
+          </div>
+        </div>
+    </div>
+      <br>
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4 centered m-t-m text-center">
+          <div class="actions">
+            <%= f.submit class: "btn-success form-control" %>
+          </div>
+        </div>
+      </div>
   </div>
 <% end %>

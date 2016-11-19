@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117115607) do
+ActiveRecord::Schema.define(version: 20161119184026) do
 
   create_table "billentries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "truck_no"
@@ -46,12 +46,21 @@ ActiveRecord::Schema.define(version: 20161117115607) do
     t.index ["user_id"], name: "index_companies_on_user_id", using: :btree
   end
 
+  create_table "daytimes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "day_start"
+    t.string   "day_off"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_daytimes_on_user_id", using: :btree
+  end
+
   create_table "trucks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "truck_no"
     t.string   "truck_driver"
     t.string   "driver_no"
-    t.datetime "day_start"
-    t.datetime "day_off"
+    t.string   "day_start"
+    t.string   "day_off"
     t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
@@ -78,5 +87,6 @@ ActiveRecord::Schema.define(version: 20161117115607) do
 
   add_foreign_key "billentries", "users"
   add_foreign_key "companies", "users"
+  add_foreign_key "daytimes", "users"
   add_foreign_key "trucks", "users"
 end

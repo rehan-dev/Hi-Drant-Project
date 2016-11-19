@@ -1,29 +1,42 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Truck no:</strong>
-  <%= @truck.truck_no %>
-</p>
-
-<p>
-  <strong>Truck driver:</strong>
-  <%= @truck.truck_driver %>
-</p>
-
-<p>
-  <strong>Driver no:</strong>
-  <%= @truck.driver_no %>
-</p>
-
-<p>
-  <strong>Day start:</strong>
-  <%= @truck.day_start %>
-</p>
-
-<p>
-  <strong>Day off:</strong>
-  <%= @truck.day_off %>
-</p>
-
-<%= link_to 'Edit', edit_truck_path(@truck) %> |
-<%= link_to 'Back', trucks_path %>
+<div class="row">
+  <div class="col-md-8">
+    <h1>Review Trucks Record</h1>
+  </div>
+  <div class="col-md-4 m-t-l text-center">
+    <%= link_to '<< Back', trucks_path, class: "btn-info form-control pull-right", style: "width:100px;" %>
+  </div>
+</div>
+<hr>
+<div class="row form-group">
+  <div class="col-md-4">
+    <h3>Truck No #</h3>
+    <input type="text" value="<%= @truck.truck_no %>" style="text-transform: uppercase;" class="form-control" disabled>
+  </div>
+  <div class="col-md-4">
+    <h3>Truck Driver Name</h3>
+    <input type="text" value="<%= @truck.truck_driver %>" class="form-control" disabled>
+  </div>
+  <div class="col-md-4">
+    <h3>Driver No #</h3>
+    <input type="text" value="<%= @truck.driver_no %>" class="form-control" disabled>
+  </div>
+</div>
+<div class="row form-group">
+  <div class="col-md-4">
+    <h3>Day Start</h3>
+    <input type="text" value="<%= @truck.day_start %>" class="form-control" disabled>
+  </div>
+  <div class="col-md-4">
+    <h3>Day off</h3>
+    <input type="text" value="<%= @truck.day_off %>" class="form-control" disabled>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4 centered m-t-m text-center">
+    <div class="actions">
+      <%= link_to 'Edit', edit_truck_path(@truck), class: "btn-success form-control" %>
+    </div>
+  </div>
+</div>
+<br>

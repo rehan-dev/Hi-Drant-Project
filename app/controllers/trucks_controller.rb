@@ -1,5 +1,6 @@
 class TrucksController < ApplicationController
   before_action :set_truck, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /trucks
   # GET /trucks.json
@@ -28,8 +29,8 @@ class TrucksController < ApplicationController
 
     respond_to do |format|
       if @truck.save
-        format.html { redirect_to @truck, notice: 'Truck was successfully created.' }
-        format.json { render :show, status: :created, location: @truck }
+        format.html { redirect_to trucks_path, notice: 'Truck was successfully created.' }
+        format.json { render :index, status: :created, location: @truck }
       else
         format.html { render :new }
         format.json { render json: @truck.errors, status: :unprocessable_entity }
@@ -42,8 +43,8 @@ class TrucksController < ApplicationController
   def update
     respond_to do |format|
       if @truck.update(truck_params)
-        format.html { redirect_to @truck, notice: 'Truck was successfully updated.' }
-        format.json { render :show, status: :ok, location: @truck }
+        format.html { redirect_to trucks_path, notice: 'Truck was successfully updated.' }
+        format.json { render :index, status: :ok, location: @truck }
       else
         format.html { render :edit }
         format.json { render json: @truck.errors, status: :unprocessable_entity }

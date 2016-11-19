@@ -11,6 +11,9 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require jquery-ui/core
+ *= require jquery-ui/theme
+ *= require dataTables/src/demo_table_jui
  *= require_self
  */
 
@@ -37,6 +40,10 @@ body {
 
 .m-t-m{
   margin-top: 20px;
+}
+
+.m-t-l{
+  margin-top: 35px;
 }
 .main-header {
   background-color: #fff;
@@ -99,6 +106,7 @@ body {
   border-radius: 14px;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 2px 14px 0 rgba(0, 0, 0, 0.06);
 }
+//= require bootstrap-formhelpers-phone
 .bill-text{
   font-size: 1.7em;
   font-weight: 800;
