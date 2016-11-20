@@ -1,7 +1,8 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-jQuery ->
-  $('#trucks_record').dataTable
-    sPaginationType: 'full_numbers'
-    bJQueryUI: true
+$(document).on "turbolinks:load", ->
+  jQuery ->
+    $('#trucks_record').dataTable
+      sPaginationType: 'full_numbers'
+      bJQueryUI: true
