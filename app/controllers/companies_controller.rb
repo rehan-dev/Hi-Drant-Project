@@ -25,6 +25,11 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = Company.new(company_params)
+    if @company[:previous_amount].blank?
+      @company[:previous_amount] = 0
+    end
+
+    @company[:net_balance] = @company[:previous_amount]
 
     respond_to do |format|
       if @company.save
@@ -69,6 +74,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:company_name, :company_address, :contact_no, :company_reference, :previous_amount, :net_balance, :received_amount)
+      params.require(:company).permit(:company_name, :company_address, :contact_no, :company_reference, :previous_amount, :net_balance)
     end
 end

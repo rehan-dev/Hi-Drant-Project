@@ -1,39 +1,57 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-8">
+    <h1>Review Company Record</h1>
+  </div>
+  <div class="col-md-4 m-t-l text-center">
+    <%= link_to '<< Back', companies_path, class: "btn-info form-control pull-right", style: "width:100px;" %>
+  </div>
+</div>
+<hr>
+<div class="row form-group">
+  <div class="col-md-3">
+    <h3>Company Name</h3>
+    <input type="text" value="<%= @company.company_name %>" class="form-control" disabled>
+  </div>
+  <div class="col-md-3">
+    <h3>Company Address</h3>
+    <input type="text" value="<%= @company.company_address %>" class="form-control" disabled>
+  </div>
+  <div class="col-md-3">
+    <h3>Contact No #</h3>
+    <input type="text" value="<%= @company.contact_no %>" class="form-control" disabled>
+  </div>
+  <div class="col-md-3">
+    <h3>Company Reference</h3>
+    <input type="text" value="<%= @company.company_reference %>" class="form-control" disabled>
+  </div>
+</div>
+<div class="row form-group">
+  <div class="col-md-3">
+    <h3>Previous Amount</h3>
+    <input type="text" value="<%= number_to_currency(@company.previous_amount, precision: 2, unit: 'PKR ') %>" class="form-control" disabled>
+  </div>
+  <div class="col-md-3">
+    <h3>Net Balance</h3>
+    <input type="text" value="<%= number_to_currency(@company.net_balance, precision: 2, unit: 'PKR ')  %>" class="form-control" disabled>
+  </div>
+</div>
 
-<p>
-  <strong>Company name:</strong>
-  <%= @company.company_name %>
-</p>
-
-<p>
-  <strong>Company address:</strong>
-  <%= @company.company_address %>
-</p>
-
-<p>
-  <strong>Contact no:</strong>
-  <%= @company.contact_no %>
-</p>
-
-<p>
-  <strong>Company reference:</strong>
-  <%= @company.company_reference %>
-</p>
-
-<p>
-  <strong>Previous amount:</strong>
-  <%= @company.previous_amount %>
-</p>
-
-<p>
-  <strong>Net balance:</strong>
-  <%= @company.net_balance %>
-</p>
-
-<p>
-  <strong>Received amount:</strong>
-  <%= @company.received_amount %>
-</p>
-
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+<div class="row">
+  <div class="col-md-2">
+    &nbsp;
+  </div>
+  <div class="col-md-4 m-t-m text-center">
+    <div class="actions">
+      <%= link_to 'Edit', edit_company_path(@company), class: "btn-success form-control" %>
+    </div>
+  </div>
+  <div class="col-md-4 m-t-m text-center">
+    <div class="action">
+      <%= link_to 'Destroy', params[:id], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-danger form-control" %>
+    </div>
+  </div>
+  <div class="col-md-2">
+    &nbsp;
+  </div>
+</div>
+<br>

@@ -5,7 +5,7 @@ class TrucksController < ApplicationController
   # GET /trucks
   # GET /trucks.json
   def index
-    @trucks = Truck.all
+    @trucks = Truck.all.where(secure: true, user_id: current_user.id)
   end
 
   # GET /trucks/1
@@ -15,7 +15,7 @@ class TrucksController < ApplicationController
 
   # GET /trucks/new
   def new
-    @truck = Truck.new
+    @truck = current_user.trucks.build
   end
 
   # GET /trucks/1/edit
@@ -25,8 +25,8 @@ class TrucksController < ApplicationController
   # POST /trucks
   # POST /trucks.json
   def create
-    @truck = Truck.new(truck_params)
-
+    @truck = current_user.trucks.build(truck_params)
+    @truck[:secure] = true
     respond_to do |format|
       if @truck.save
         format.html { redirect_to trucks_path, notice: 'Truck was successfully created.' }
@@ -55,7 +55,7 @@ class TrucksController < ApplicationController
   # DELETE /trucks/1
   # DELETE /trucks/1.json
   def destroy
-    @truck.destroy
+    @truck.update(secure: false)
     respond_to do |format|
       format.html { redirect_to trucks_url, notice: 'Truck was successfully destroyed.' }
       format.json { head :no_content }

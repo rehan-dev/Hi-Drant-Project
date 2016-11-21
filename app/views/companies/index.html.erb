@@ -1,39 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-4">
+    <h1>Companies</h1>
+  </div>
+  <div class="col-md-4">
 
-<h1>Companies</h1>
+  </div>
+  <div class="col-md-4 m-t-m text-center">
+    <%= link_to '+ New Company Entry', new_company_path, class: "btn-success form-control pull-right", style: "width:200px;" %>
+  </div>
+</div>
 
-<table>
+<table class="display" id="companies">
   <thead>
     <tr>
-      <th>Company name</th>
-      <th>Company address</th>
-      <th>Contact no</th>
-      <th>Company reference</th>
-      <th>Previous amount</th>
-      <th>Net balance</th>
-      <th>Received amount</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th>Company Name</th>
+      <th>Company Address</th>
+      <th>Contact No</th>
+      <th>Company Reference</th>
+      <th>Previous Amount</th>
+      <th>Net Balance</th>
     </tr>
   </thead>
 
   <tbody>
     <% @companies.each do |company| %>
       <tr>
-        <td><%= company.company_name %></td>
-        <td><%= company.company_address %></td>
-        <td><%= company.contact_no %></td>
-        <td><%= company.company_reference %></td>
-        <td><%= company.previous_amount %></td>
-        <td><%= company.net_balance %></td>
-        <td><%= company.received_amount %></td>
-        <td><%= link_to 'Show', company %></td>
-        <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to company.id, company %></td>
+        <td><%= link_to company.company_name, company %></td>
+        <td><%= link_to company.company_address, company %></td>
+        <td><%= link_to company.contact_no, company %></td>
+        <td><%= link_to company.company_reference, company %></td>
+        <td><%= link_to number_to_currency(company.previous_amount, precision: 2, unit: 'PKR '), company %></td>
+        <td><%= link_to number_to_currency(company.net_balance, precision: 2, unit: 'PKR '), company %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
 
-<%= link_to 'New Company', new_company_path %>

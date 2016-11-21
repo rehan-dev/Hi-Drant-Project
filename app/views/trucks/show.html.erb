@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <div class="row">
   <div class="col-md-8">
     <h1>Review Trucks Record</h1>
@@ -33,10 +32,21 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-4 col-md-offset-4 centered m-t-m text-center">
+  <div class="col-md-2">
+    &nbsp;
+  </div>
+  <div class="col-md-4 m-t-m text-center">
     <div class="actions">
       <%= link_to 'Edit', edit_truck_path(@truck), class: "btn-success form-control" %>
     </div>
+  </div>
+  <div class="col-md-4 m-t-m text-center">
+    <div class="action">
+      <%= link_to 'Destroy', params[:id], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-danger form-control" %>
+    </div>
+  </div>
+  <div class="col-md-2">
+    &nbsp;
   </div>
 </div>
 <br>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161119184026) do
+ActiveRecord::Schema.define(version: 20161121210408) do
 
   create_table "billentries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "truck_no"
@@ -37,12 +37,11 @@ ActiveRecord::Schema.define(version: 20161119184026) do
     t.text     "company_address",   limit: 65535
     t.string   "contact_no"
     t.string   "company_reference"
-    t.decimal  "previous_amount",                 precision: 10
-    t.decimal  "net_balance",                     precision: 10
-    t.decimal  "received_amount",                 precision: 10
+    t.decimal  "previous_amount",                 precision: 10, scale: 2
+    t.decimal  "net_balance",                     precision: 10, scale: 2
     t.integer  "user_id"
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
     t.index ["user_id"], name: "index_companies_on_user_id", using: :btree
   end
 
@@ -64,6 +63,7 @@ ActiveRecord::Schema.define(version: 20161119184026) do
     t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.boolean  "secure"
     t.index ["user_id"], name: "index_trucks_on_user_id", using: :btree
   end
 
