@@ -1,10 +1,11 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @companies = Company.all.where(secure: true, user_id: current_user.id)
   end
 
   # GET /companies/1
@@ -14,7 +15,7 @@ class CompaniesController < ApplicationController
 
   # GET /companies/new
   def new
-    @company = Company.new
+    @company = current_user.companies.build
   end
 
   # GET /companies/1/edit
@@ -24,11 +25,11 @@ class CompaniesController < ApplicationController
   # POST /companies
   # POST /companies.json
   def create
-    @company = Company.new(company_params)
+    @company = current_user.companies.build(company_params)
     if @company[:previous_amount].blank?
       @company[:previous_amount] = 0
     end
-
+    @company[:secure] = true
     @company[:net_balance] = @company[:previous_amount]
 
     respond_to do |format|
@@ -59,7 +60,7 @@ class CompaniesController < ApplicationController
   # DELETE /companies/1
   # DELETE /companies/1.json
   def destroy
-    @company.destroy
+    @company.update(secure: false)
     respond_to do |format|
       format.html { redirect_to companies_url, notice: 'Company was successfully destroyed.' }
       format.json { head :no_content }
