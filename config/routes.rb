@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :receivables
   resources :billentries
   resources :companies
   resources :trucks

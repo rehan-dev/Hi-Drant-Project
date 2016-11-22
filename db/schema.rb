@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121211805) do
+ActiveRecord::Schema.define(version: 20161122205418) do
 
   create_table "billentries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "truck_no"
@@ -19,15 +19,13 @@ ActiveRecord::Schema.define(version: 20161121211805) do
     t.datetime "time_arrive"
     t.datetime "time_departure"
     t.date     "current_date"
-    t.decimal  "supply_rate",          precision: 10
-    t.decimal  "weight",               precision: 10
-    t.decimal  "previous_amount",      precision: 10
-    t.decimal  "current_total_amount", precision: 10
-    t.decimal  "recieved_amount",      precision: 10
-    t.decimal  "net_balance",          precision: 10
-    t.decimal  "total_amount",         precision: 10
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.decimal  "supply_rate",       precision: 10
+    t.decimal  "capacity",          precision: 10
+    t.decimal  "previous_balance",  precision: 10
+    t.decimal  "bill_total_amount", precision: 10
+    t.decimal  "total_amount",      precision: 10
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "user_id"
     t.index ["user_id"], name: "index_billentries_on_user_id", using: :btree
   end
@@ -38,7 +36,7 @@ ActiveRecord::Schema.define(version: 20161121211805) do
     t.string   "contact_no"
     t.string   "company_reference"
     t.decimal  "previous_amount",                 precision: 10, scale: 2
-    t.decimal  "net_balance",                     precision: 10, scale: 2
+    t.decimal  "current_balance",                 precision: 10, scale: 2
     t.integer  "user_id"
     t.datetime "created_at",                                               null: false
     t.datetime "updated_at",                                               null: false
@@ -55,6 +53,16 @@ ActiveRecord::Schema.define(version: 20161121211805) do
     t.index ["user_id"], name: "index_daytimes_on_user_id", using: :btree
   end
 
+  create_table "receivables", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "company_id"
+    t.decimal  "receiveable_amount",               precision: 20, scale: 2
+    t.date     "check_date"
+    t.date     "transaction_date"
+    t.text     "remarks",            limit: 65535
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
+  end
+
   create_table "trucks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "truck_no"
     t.string   "truck_driver"
@@ -65,6 +73,7 @@ ActiveRecord::Schema.define(version: 20161121211805) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.boolean  "secure"
+    t.string   "truck_owner"
     t.index ["user_id"], name: "index_trucks_on_user_id", using: :btree
   end
 

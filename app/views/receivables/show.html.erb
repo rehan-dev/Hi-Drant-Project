@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @receivable.company_id %>
+</p>
+
+<p>
+  <strong>Receiveable amount:</strong>
+  <%= @receivable.receiveable_amount %>
+</p>
+
+<p>
+  <strong>Check date:</strong>
+  <%= @receivable.check_date %>
+</p>
+
+<p>
+  <strong>Transaction date:</strong>
+  <%= @receivable.transaction_date %>
+</p>
+
+<p>
+  <strong>Remarks:</strong>
+  <%= @receivable.remarks %>
+</p>
+
+<%= link_to 'Edit', edit_receivable_path(@receivable) %> |
+<%= link_to 'Back', receivables_path %>

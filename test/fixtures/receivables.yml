@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_id: 1
+  receiveable_amount: 9.99
+  check_date: 2016-11-23
+  transaction_date: 2016-11-23
+  remarks: MyText
+
+two:
+  company_id: 1
+  receiveable_amount: 9.99
+  check_date: 2016-11-23
+  transaction_date: 2016-11-23
+  remarks: MyText

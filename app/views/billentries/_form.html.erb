@@ -11,72 +11,103 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :truck_no %>
-    <%= f.text_field :truck_no %>
+<div class="form-group">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="field">
+        <%= f.label :truck_no %>
+        <%= f.collection_select :truck_no, Truck.all.where(secure:true, user_id: current_user.id), :id, :truck_no, { include_blank: 'Choice Truck' }, { class: "form-control", required: :true }  %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :company_name %>
+        <%= f.collection_select :company_name, Company.all.where(secure:true, user_id: current_user.id), :id, :company_name, { include_blank: 'Choice Company Name' },class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :address %>
+        <%= f.text_area :address, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="field">
+        <%= f.label :time_arrive %>
+        <%= f.collection_select :time_arrive, Daytime.all, :day_start, :day_start, {include_blank: 'Arrive Time'}, { class: "form-control", required: :true }  %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :company_name %>
-    <%= f.text_field :company_name %>
+  <br>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="field">
+        <%= f.label :time_departure %>
+        <%= f.collection_select :time_departure, Daytime.all, :day_start, :day_start, {include_blank: 'Choice Day Start Time'}, { class: "form-control", required: :true }  %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="field">
+        <%= f.label :current_date %>
+        <%= f.date_field :current_date, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="field">
+        <%= f.label :supply_rate %>
+        <%= f.text_field :supply_rate, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="field">
+        <%= f.label :weight %>
+        <%= f.text_field :weight, class: "form-control" %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :address %>
-    <%= f.text_field :address %>
+  <br>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="field">
+        <%= f.label :previous_amount %>
+        <%= f.text_field :previous_amount, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="field">
+        <%= f.label :current_total_amount %>
+        <%= f.text_field :current_total_amount, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="field">
+        <%= f.label :recieved_amount %>
+        <%= f.text_field :recieved_amount, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="field">
+        <%= f.label :net_balance %>
+        <%= f.text_field :net_balance, class: "form-control" %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :time_arrive %>
-    <%= f.datetime_select :time_arrive %>
+  <br>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="field">
+        <%= f.label :total_amount %>
+        <%= f.text_field :total_amount, class: "form-control" %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :time_departure %>
-    <%= f.datetime_select :time_departure %>
+  <br>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 centered m-t-m text-center">
+      <div class="actions">
+        <%= f.submit class: "btn-success form-control" %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :current_date %>
-    <%= f.date_select :current_date %>
-  </div>
-
-  <div class="field">
-    <%= f.label :supply_rate %>
-    <%= f.text_field :supply_rate %>
-  </div>
-
-  <div class="field">
-    <%= f.label :weight %>
-    <%= f.text_field :weight %>
-  </div>
-
-  <div class="field">
-    <%= f.label :previous_amount %>
-    <%= f.text_field :previous_amount %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_total_amount %>
-    <%= f.text_field :current_total_amount %>
-  </div>
-
-  <div class="field">
-    <%= f.label :recieved_amount %>
-    <%= f.text_field :recieved_amount %>
-  </div>
-
-  <div class="field">
-    <%= f.label :net_balance %>
-    <%= f.text_field :net_balance %>
-  </div>
-
-  <div class="field">
-    <%= f.label :total_amount %>
-    <%= f.text_field :total_amount %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
 <% end %>
