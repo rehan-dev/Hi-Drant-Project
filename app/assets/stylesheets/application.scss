@@ -65,8 +65,11 @@ body {
   margin-bottom: 20px;
   height: 124px;
   margin-left: 20px;
-  border-radius: 14px;
+  border-radius: 1px;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 2px 14px 0 rgba(0, 0, 0, 0.06);
+}
+.truck-module:hover{
+  background-color: gainsboro;
 }
 .truck-text{
   font-size: 1.7em;
@@ -84,8 +87,11 @@ body {
   margin-bottom: 20px;
   height: 124px;
   margin-left: 20px;
-  border-radius: 14px;
+  border-radius: 1px;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 2px 14px 0 rgba(0, 0, 0, 0.06);
+}
+.cc-module:hover{
+  background-color: gainsboro;
 }
 .cc-text{
   font-size: 1.7em;
@@ -103,10 +109,12 @@ body {
   margin-bottom: 20px;
   height: 124px;
   margin-left: 20px;
-  border-radius: 14px;
+  border-radius: 1px;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 2px 14px 0 rgba(0, 0, 0, 0.06);
 }
-//= require bootstrap-formhelpers-phone
+.bill-module:hover{
+  background-color: gainsboro;
+}
 .bill-text{
   font-size: 1.7em;
   font-weight: 800;
@@ -123,8 +131,11 @@ body {
   margin-bottom: 20px;
   height: 124px;
   margin-left: 20px;
-  border-radius: 14px;
+  border-radius: 1px;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 2px 14px 0 rgba(0, 0, 0, 0.06);
+}
+.report-module:hover{
+  background-color: gainsboro;
 }
 .report-text{
   font-size: 1.7em;
@@ -136,20 +147,40 @@ body {
   background-image: image-url('exit.svg');
   background-repeat: no-repeat;
   background-size: 120px;
-  background-position-x: 21px;
+  background-position-x: 69px;
   background-position-y: 4px;
   background-color: #f2f2f2;
   margin-bottom: 20px;
   height: 124px;
-  margin-left: 111px;
-  margin-right: 102px;
-  border-radius: 14px;
+  margin-left: 20px;
+  border-radius: 1px;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 2px 14px 0 rgba(0, 0, 0, 0.06);
 }
 .exit:hover{
   background-color: rgba(9, 9, 9, 0.42);
 }
 .exit-text{
+  font-size: 1.7em;
+  font-weight: 800;
+  color: $h3_color;
+}
+.receiveable-module{
+  background-image: image-url('receiveable.svg');
+  background-repeat: no-repeat;
+  background-size: 197px;
+  background-position-x: 25px;
+  background-position-y: 4px;
+  background-color: #f2f2f2;
+  margin-bottom: 20px;
+  height: 124px;
+  margin-left: 20px;
+  border-radius: 1px;
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 2px 14px 0 rgba(0, 0, 0, 0.06);
+}
+.receiveable-module:hover{
+  background-color: gainsboro;
+}
+.receiveable-text{
   font-size: 1.7em;
   font-weight: 800;
   color: $h3_color;

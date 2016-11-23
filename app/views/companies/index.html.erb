@@ -18,8 +18,8 @@
       <th>Company Address</th>
       <th>Contact No</th>
       <th>Company Reference</th>
-      <th>Previous Amount</th>
-      <th>Net Balance</th>
+      <th>Total Bill Amount</th>
+      <th>Recoverable Amount</th>
     </tr>
   </thead>
 
@@ -31,8 +31,8 @@
         <td><%= link_to company.company_address, company %></td>
         <td><%= link_to company.contact_no, company %></td>
         <td><%= link_to company.company_reference, company %></td>
-        <td><%= link_to number_to_currency(company.previous_amount, precision: 2, unit: 'PKR '), company %></td>
-        <td><%= link_to number_to_currency(company.net_balance, precision: 2, unit: 'PKR '), company %></td>
+        <td><%= link_to number_to_currency(company.total_bill_amount, precision: 2, unit: 'PKR '), company %></td>
+        <td><%= link_to number_to_currency(company.recoverable_amount, precision: 2, unit: 'PKR '), company %></td>
       </tr>
     <% end %>
   </tbody>

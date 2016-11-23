@@ -1,10 +1,11 @@
 class ReceivablesController < ApplicationController
   before_action :set_receivable, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /receivables
   # GET /receivables.json
   def index
-    @receivables = Receivable.all
+    @receivables = Receivable.all.where(secure: true, user_id: current_user.id)
   end
 
   # GET /receivables/1
@@ -14,7 +15,7 @@ class ReceivablesController < ApplicationController
 
   # GET /receivables/new
   def new
-    @receivable = Receivable.new
+    @receivable = current_user.receivables.build
   end
 
   # GET /receivables/1/edit
@@ -24,8 +25,9 @@ class ReceivablesController < ApplicationController
   # POST /receivables
   # POST /receivables.json
   def create
-    @receivable = Receivable.new(receivable_params)
-
+    @receivable = current_user.receivables.new(receivable_params)
+    @receivable[:secure] = true
+    # @company_previous_balance = Company.find_by(id: @receivable.company_id)
     respond_to do |format|
       if @receivable.save
         format.html { redirect_to @receivable, notice: 'Receivable was successfully created.' }
@@ -54,7 +56,7 @@ class ReceivablesController < ApplicationController
   # DELETE /receivables/1
   # DELETE /receivables/1.json
   def destroy
-    @receivable.destroy
+    @receivable.update(secure: true)
     respond_to do |format|
       format.html { redirect_to receivables_url, notice: 'Receivable was successfully destroyed.' }
       format.json { head :no_content }

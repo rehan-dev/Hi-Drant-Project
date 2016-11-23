@@ -41,14 +41,22 @@
   <div class="row">
     <div class="col-md-4">
       <div class="field">
-        <%= f.label :previous_amount %>
-        <%= f.text_field :previous_amount, value: number_with_precision(f.object.previous_amount, precision: 2) ,class: "form-control", placeholder: "Company Previous Amount" %>
+        <%= f.label :total_bill_amount %>
+        <% if company.persisted? %>
+          <%= f.text_field :total_bill_amount, value: number_with_precision(f.object.total_bill_amount, precision: 2) ,class: "form-control", disabled: true %>
+        <% else %>
+            <%= f.text_field :total_bill_amount, value: number_with_precision(f.object.total_bill_amount, precision: 2) ,class: "form-control", placeholder: "Company Total Bill Amount"%>
+        <% end %>
       </div>
     </div>
     <div class="col-md-4">
       <div class="field">
-        <%= f.label :net_balance %>
-        <%= f.text_field :net_balance, value: number_with_precision(f.object.net_balance, precision: 2) ,class: "form-control", placeholder: "Automatic Fill",disabled: true %>
+        <%= f.label :recoverable_amount %>
+        <% if company.persisted? %>
+          <%= f.text_field :recoverable_amount, value: number_with_precision(f.object.recoverable_amount, precision: 2) ,class: "form-control", disabled: true%>
+        <% else %>
+          <%= f.text_field :recoverable_amount, value: number_with_precision(f.object.recoverable_amount, precision: 2) ,class: "form-control", placeholder: "Recoverable Amount" %>
+        <% end %>
       </div>
     </div>
   </div>

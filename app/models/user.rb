@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :trucks
   has_many :companies
+  has_many :receivables
 end

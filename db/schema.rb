@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161122205418) do
+ActiveRecord::Schema.define(version: 20161123221734) do
 
   create_table "billentries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "truck_no"
@@ -32,14 +32,14 @@ ActiveRecord::Schema.define(version: 20161122205418) do
 
   create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company_name"
-    t.text     "company_address",   limit: 65535
+    t.text     "company_address",    limit: 65535
     t.string   "contact_no"
     t.string   "company_reference"
-    t.decimal  "previous_amount",                 precision: 10, scale: 2
-    t.decimal  "current_balance",                 precision: 10, scale: 2
+    t.decimal  "total_bill_amount",                precision: 10, scale: 2
+    t.decimal  "recoverable_amount",               precision: 10, scale: 2
     t.integer  "user_id"
-    t.datetime "created_at",                                               null: false
-    t.datetime "updated_at",                                               null: false
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
     t.boolean  "secure"
     t.index ["user_id"], name: "index_companies_on_user_id", using: :btree
   end
@@ -61,6 +61,9 @@ ActiveRecord::Schema.define(version: 20161122205418) do
     t.text     "remarks",            limit: 65535
     t.datetime "created_at",                                                null: false
     t.datetime "updated_at",                                                null: false
+    t.boolean  "secure"
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_receivables_on_user_id", using: :btree
   end
 
   create_table "trucks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -98,5 +101,6 @@ ActiveRecord::Schema.define(version: 20161122205418) do
   add_foreign_key "billentries", "users"
   add_foreign_key "companies", "users"
   add_foreign_key "daytimes", "users"
+  add_foreign_key "receivables", "users"
   add_foreign_key "trucks", "users"
 end
