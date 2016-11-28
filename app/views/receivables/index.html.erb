@@ -14,6 +14,7 @@
   <thead>
     <tr>
       <th>Company</th>
+      <th>Bill No</th>
       <th>Receiveable amount</th>
       <th>Check date</th>
       <th>Transaction date</th>
@@ -25,10 +26,11 @@
     <% @receivables.each do |receivable| %>
       <tr>
         <td><%= link_to Company.where(id: receivable.company_id).pluck(:company_name).join(" "), receivable %></td>
+        <td><%= link_to receivable.bill_no, receivable %></td>
         <td><%= link_to receivable.receiveable_amount, receivable %></td>
-        <td><%= link_to receivable.check_date, receivable %></td>
-        <td><%= link_to receivable.transaction_date, receivable %></td>
-        <td><%= link_to receivable.remarks, receivable %></td>
+        <td><%= link_to receivable.check_date.present? ? receivable.check_date : '', receivable %></td>
+        <td><%= link_to receivable.transaction_date.present? ? receivable.transaction_date : '', receivable %></td>
+        <td><%= link_to receivable.remarks.present? ? receivable.remarks : '', receivable %></td>
       </tr>
     <% end %>
   </tbody>

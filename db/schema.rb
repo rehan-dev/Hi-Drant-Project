@@ -10,36 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123221734) do
+ActiveRecord::Schema.define(version: 20161128111438) do
 
   create_table "billentries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "truck_no"
-    t.string   "company_name"
     t.string   "address"
-    t.datetime "time_arrive"
-    t.datetime "time_departure"
+    t.string   "time_arrive"
+    t.string   "time_departure"
     t.date     "current_date"
-    t.decimal  "supply_rate",       precision: 10
-    t.decimal  "capacity",          precision: 10
-    t.decimal  "previous_balance",  precision: 10
-    t.decimal  "bill_total_amount", precision: 10
-    t.decimal  "total_amount",      precision: 10
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.decimal  "supply_rate",      precision: 10, scale: 2
+    t.decimal  "capacity",         precision: 10, scale: 2
+    t.decimal  "previous_balance", precision: 20, scale: 2
+    t.decimal  "total_amount",     precision: 20, scale: 2
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.integer  "user_id"
+    t.integer  "company_id"
+    t.boolean  "secure"
+    t.decimal  "received_amount",  precision: 20, scale: 2
     t.index ["user_id"], name: "index_billentries_on_user_id", using: :btree
   end
 
   create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "company_name"
-    t.text     "company_address",    limit: 65535
+    t.text     "company_address",   limit: 65535
     t.string   "contact_no"
     t.string   "company_reference"
-    t.decimal  "total_bill_amount",                precision: 10, scale: 2
-    t.decimal  "recoverable_amount",               precision: 10, scale: 2
+    t.decimal  "total_bill_amount",               precision: 20, scale: 2
+    t.decimal  "received_amount",                 precision: 20, scale: 2
     t.integer  "user_id"
-    t.datetime "created_at",                                                null: false
-    t.datetime "updated_at",                                                null: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
     t.boolean  "secure"
     t.index ["user_id"], name: "index_companies_on_user_id", using: :btree
   end
@@ -63,6 +64,7 @@ ActiveRecord::Schema.define(version: 20161123221734) do
     t.datetime "updated_at",                                                null: false
     t.boolean  "secure"
     t.integer  "user_id"
+    t.integer  "bill_no"
     t.index ["user_id"], name: "index_receivables_on_user_id", using: :btree
   end
 

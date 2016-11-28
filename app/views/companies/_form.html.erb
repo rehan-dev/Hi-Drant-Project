@@ -51,11 +51,11 @@
     </div>
     <div class="col-md-4">
       <div class="field">
-        <%= f.label :recoverable_amount %>
+        <%= f.label :received_amount %>
         <% if company.persisted? %>
-          <%= f.text_field :recoverable_amount, value: number_with_precision(f.object.recoverable_amount, precision: 2) ,class: "form-control", disabled: true%>
+          <%= f.text_field :received_amount, value: number_with_precision(f.object.received_amount, precision: 2) ,class: "form-control", disabled: true%>
         <% else %>
-          <%= f.text_field :recoverable_amount, value: number_with_precision(f.object.recoverable_amount, precision: 2) ,class: "form-control", placeholder: "Recoverable Amount" %>
+          <%= f.text_field :received_amount, value: number_with_precision(f.object.received_amount, precision: 2) ,class: "form-control", placeholder: "Received Amount" %>
         <% end %>
       </div>
     </div>

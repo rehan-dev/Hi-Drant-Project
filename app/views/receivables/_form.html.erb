@@ -15,7 +15,13 @@
     <div class="col-md-3">
       <div class="field">
         <%= f.label :company_id %>
-        <%= f.collection_select :company_id, Company.all.where(secure:true, user_id: current_user.id), :id, :company_name, { include_blank: 'Choice Company Name' } ,class: "form-control", placeholder: "Company Select", required: :true %>
+        <%= f.collection_select :company_id, Company.all.where(secure:true, user_id: current_user.id), :id, :company_name, { include_blank: 'Choose Company Name' } ,class: "form-control", placeholder: "Company Select", required: :true %>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="field">
+        <%= f.label :bill_no %>
+        <%= f.collection_select :bill_no, Billentry.all.where(secure:true, user_id: current_user.id), :id, :id, { include_blank: 'Choose Bill No' } ,class: "form-control", required: :true %>
       </div>
     </div>
     <div class="col-md-3">
@@ -27,22 +33,22 @@
     <div class="col-md-3">
       <div class="field">
         <%= f.label :check_date %>
-        <%= f.date_field :check_date, class: "form-control", required: :true %>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="field">
-        <%= f.label :transaction_date %>
-        <%= f.date_field :transaction_date, class: "form-control", required: :true %>
+        <%= f.date_field :check_date, class: "form-control" %>
       </div>
     </div>
   </div>
   <br>
   <div class="row">
+    <div class="col-md-3">
+      <div class="field">
+        <%= f.label :transaction_date %>
+        <%= f.date_field :transaction_date, class: "form-control" %>
+      </div>
+    </div>
     <div class="col-md-4">
       <div class="field">
         <%= f.label :remarks %>
-        <%= f.text_area :remarks, class: "form-control", placeholder: "Company Reference Name", required: :true %>
+        <%= f.text_area :remarks, class: "form-control", placeholder: "Check No or Other Details" %>
       </div>
     </div>
   </div>

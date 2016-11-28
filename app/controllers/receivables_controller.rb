@@ -27,9 +27,15 @@ class ReceivablesController < ApplicationController
   def create
     @receivable = current_user.receivables.new(receivable_params)
     @receivable[:secure] = true
-    # @company_previous_balance = Company.find_by(id: @receivable.company_id)
+    received_amount = Company.where(id: @receivable[:company_id]).select(:received_amount)
+    comp_received_amount = received_amount[0].received_amount + @receivable[:receiveable_amount]
+
+    bill_received_amount = Billentry.where(id: @receivable[:bill_no]).select(:received_amount)
+    addbill_received_amount = (bill_received_amount[0].received_amount.present? ? bill_received_amount[0].received_amount : 0) + (@receivable[:receiveable_amount].present? ? @receivable[:receiveable_amount] : 0)
     respond_to do |format|
       if @receivable.save
+        Company.where(id: @receivable[:company_id]).update(received_amount: comp_received_amount)
+        Billentry.where(id: @receivable[:bill_no]).update(received_amount: addbill_received_amount)
         format.html { redirect_to @receivable, notice: 'Receivable was successfully created.' }
         format.json { render :show, status: :created, location: @receivable }
       else
@@ -44,6 +50,8 @@ class ReceivablesController < ApplicationController
   def update
     respond_to do |format|
       if @receivable.update(receivable_params)
+        Company.where(id: @receivable[:company_id]).update(received_amount: @receivable[:receiveable_amount])
+        Billentry.where(id: @receivable[:bill_no]).update(received_amount: @receivable[:receiveable_amount])
         format.html { redirect_to @receivable, notice: 'Receivable was successfully updated.' }
         format.json { render :show, status: :ok, location: @receivable }
       else
@@ -71,6 +79,6 @@ class ReceivablesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def receivable_params
-      params.require(:receivable).permit(:company_id, :receiveable_amount, :check_date, :transaction_date, :remarks)
+      params.require(:receivable).permit(:company_id, :receiveable_amount, :check_date, :transaction_date, :remarks, :bill_no)
     end
 end

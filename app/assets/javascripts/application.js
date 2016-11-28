@@ -17,3 +17,20 @@
 //= require dataTables/jquery.dataTables
 //= require turbolinks
 //= require_tree .
+
+// $(document).on('change', '#billentry_company_id', function(evt) {
+//     var id;
+//     id = $("#billentry_company_id option:selected").val();
+//     console.log(id);
+//     return jQuery.ajax({
+//         url: '/billentries/company_data',
+//         type: 'get',
+//         data: {
+//             data_id: id
+//         },
+//         success: function(data) {
+//             return console.log(gon.values);
+//             $('#address').val("hack");
+//         }
+//     });
+// });

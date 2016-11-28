@@ -1,10 +1,10 @@
-<%= form_for(billentry) do |f| %>
+<%= form_for(billentry, remote: true) do |f| %>
   <% if billentry.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(billentry.errors.count, "error") %> prohibited this billentry from being saved:</h2>
 
       <ul>
-      <% billentry.errors.full_messages.each do |message| %>
+      <% billentry.errors.full_messages.each do |message| %>params[:id]
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -22,13 +22,17 @@
     <div class="col-md-4">
       <div class="field">
         <%= f.label :company_name %>
-        <%= f.collection_select :company_name, Company.all.where(secure:true, user_id: current_user.id), :id, :company_name, { include_blank: 'Choice Company Name' },class: "form-control" %>
+        <% if billentry.persisted? %>
+          <%= f.collection_select :company_id, Company.all.where(secure:true, user_id: current_user.id), :id, :company_name, { include_blank: 'Choice Company Name' },class: "form-control", disabled: true %>
+        <% else %>
+          <%= f.collection_select :company_id, Company.all.where(secure:true, user_id: current_user.id), :id, :company_name, { include_blank: 'Choice Company Name' },class: "form-control" %>
+        <% end %>
       </div>
     </div>
     <div class="col-md-4">
       <div class="field">
         <%= f.label :address %>
-        <%= f.text_area :address, class: "form-control" %>
+        <%= f.text_area :address,class: "form-control", readonly: true%>
       </div>
     </div>
     <div class="col-md-2">
@@ -60,8 +64,8 @@
     </div>
     <div class="col-md-3">
       <div class="field">
-        <%= f.label :weight %>
-        <%= f.text_field :weight, class: "form-control" %>
+        <%= f.label :capacity %>
+        <%= f.text_field :capacity, class: "form-control capa" %>
       </div>
     </div>
   </div>
@@ -69,31 +73,10 @@
   <div class="row">
     <div class="col-md-3">
       <div class="field">
-        <%= f.label :previous_amount %>
-        <%= f.text_field :previous_amount, class: "form-control" %>
+        <%= f.label :previous_balance %>
+        <%= f.text_field :previous_balance, class: "form-control", readonly: true%>
       </div>
     </div>
-    <div class="col-md-3">
-      <div class="field">
-        <%= f.label :current_total_amount %>
-        <%= f.text_field :current_total_amount, class: "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="field">
-        <%= f.label :recieved_amount %>
-        <%= f.text_field :recieved_amount, class: "form-control" %>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="field">
-        <%= f.label :net_balance %>
-        <%= f.text_field :net_balance, class: "form-control" %>
-      </div>
-    </div>
-  </div>
-  <br>
-  <div class="row">
     <div class="col-md-3">
       <div class="field">
         <%= f.label :total_amount %>
