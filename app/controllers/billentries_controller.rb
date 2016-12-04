@@ -45,9 +45,12 @@ class BillentriesController < ApplicationController
   # PATCH/PUT /billentries/1
   # PATCH/PUT /billentries/1.json
   def update
+    company_total_amount = Company.where(id: @billentry[:company_id]).select(:total_bill_amount)
+    m_cta_w_bta = (company_total_amount[0].total_bill_amount.present? ? company_total_amount[0].total_bill_amount : 0) - (@billentry[:total_amount].present? ? @billentry[:total_amount] : 0)
+    updated_comp_bta = m_cta_w_bta + billentry_params[:total_amount].to_d
     respond_to do |format|
       if @billentry.update(billentry_params)
-        Company.where(id: @billentry[:company_id]).update(total_bill_amount: @billentry[:total_amount])
+        Company.where(id: @billentry[:company_id]).update(total_bill_amount: updated_comp_bta)
         format.html { redirect_to @billentry, notice: 'Billentry was successfully updated.' }
         format.json { render :show, status: :ok, location: @billentry }
       else

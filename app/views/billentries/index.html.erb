@@ -13,7 +13,7 @@
 <table class="display" id="billentries">
   <thead>
     <tr>
-      <th>Truck no</th>
+      <th>Bill No</th>
       <th>Company name</th>
       <th>Time arrive</th>
       <th>Time departure</th>
@@ -30,7 +30,7 @@
   <tbody>
     <% @billentries.each do |billentry| %>
       <tr>
-        <td><%=link_to Truck.where(id: billentry.truck_no).pluck(:truck_no).flatten.join(' '), billentry %></td>
+        <td><%=link_to billentry.id, billentry %></td>
         <td><%=link_to Company.where(id: billentry.company_id).pluck(:company_name).flatten.join(' '), billentry %></td>
         <td><%=link_to billentry.time_arrive, billentry %></td>
         <td><%=link_to billentry.time_departure, billentry %></td>

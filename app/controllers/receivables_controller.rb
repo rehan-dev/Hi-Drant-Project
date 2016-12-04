@@ -48,10 +48,17 @@ class ReceivablesController < ApplicationController
   # PATCH/PUT /receivables/1
   # PATCH/PUT /receivables/1.json
   def update
+    comp_received_amount = Company.where(id: @receivable[:company_id]).select(:received_amount)
+    m_cra_w_rra = (comp_received_amount[0].received_amount.present? ? comp_received_amount[0].received_amount : 0 ) - (@receivable[:receiveable_amount].present? ? @receivable[:receiveable_amount] : 0)
+    updated_comp_ra = m_cra_w_rra + receivable_params[:receiveable_amount].to_d
+
+    bill_received_amount = Billentry.where(id: @receivable[:bill_no]).select(:received_amount)
+    m_bra_w_rra = (bill_received_amount[0].received_amount.present? ? bill_received_amount[0].received_amount : 0) - (@receivable[:receiveable_amount].present? ? @receivable[:receiveable_amount] : 0)
+    update_bill_ra = m_bra_w_rra + receivable_params[:receiveable_amount].to_d
     respond_to do |format|
       if @receivable.update(receivable_params)
-        Company.where(id: @receivable[:company_id]).update(received_amount: @receivable[:receiveable_amount])
-        Billentry.where(id: @receivable[:bill_no]).update(received_amount: @receivable[:receiveable_amount])
+        Company.where(id: @receivable[:company_id]).update(received_amount: updated_comp_ra)
+        Billentry.where(id: @receivable[:bill_no]).update(received_amount: update_bill_ra)
         format.html { redirect_to @receivable, notice: 'Receivable was successfully updated.' }
         format.json { render :show, status: :ok, location: @receivable }
       else

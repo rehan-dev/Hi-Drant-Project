@@ -25,14 +25,14 @@
         <% if billentry.persisted? %>
           <%= f.collection_select :company_id, Company.all.where(secure:true, user_id: current_user.id), :id, :company_name, { include_blank: 'Choice Company Name' },class: "form-control", disabled: true %>
         <% else %>
-          <%= f.collection_select :company_id, Company.all.where(secure:true, user_id: current_user.id), :id, :company_name, { include_blank: 'Choice Company Name' },class: "form-control" %>
+          <%= f.collection_select :company_id, Company.all.where(secure:true, user_id: current_user.id), :id, :company_name, { include_blank: 'Choice Company Name' },class: "form-control", required: :true %>
         <% end %>
       </div>
     </div>
     <div class="col-md-4">
       <div class="field">
         <%= f.label :address %>
-        <%= f.text_area :address,class: "form-control", readonly: true%>
+        <%= f.text_area :address,class: "form-control", placeholder: 'Address Populate When You Select Company',readonly: true%>
       </div>
     </div>
     <div class="col-md-2">
@@ -53,19 +53,19 @@
     <div class="col-md-3">
       <div class="field">
         <%= f.label :current_date %>
-        <%= f.date_field :current_date, class: "form-control" %>
+        <%= f.date_field :current_date, class: "form-control", required: :true %>
       </div>
     </div>
     <div class="col-md-3">
       <div class="field">
         <%= f.label :supply_rate %>
-        <%= f.text_field :supply_rate, class: "form-control" %>
+        <%= f.text_field :supply_rate, class: "form-control", placeholder: 'Supply Rate',required: :true %>
       </div>
     </div>
     <div class="col-md-3">
       <div class="field">
         <%= f.label :capacity %>
-        <%= f.text_field :capacity, class: "form-control capa" %>
+        <%= f.text_field :capacity, class: "form-control capa", placeholder: 'Capacity In LTR' ,required: :true %>
       </div>
     </div>
   </div>
@@ -74,13 +74,13 @@
     <div class="col-md-3">
       <div class="field">
         <%= f.label :previous_balance %>
-        <%= f.text_field :previous_balance, class: "form-control", readonly: true%>
+        <%= f.text_field :previous_balance, class: "form-control",placeholder: 'Select Company For Previous' ,readonly: true%>
       </div>
     </div>
     <div class="col-md-3">
       <div class="field">
         <%= f.label :total_amount %>
-        <%= f.text_field :total_amount, class: "form-control" %>
+        <%= f.text_field :total_amount, class: "form-control", placeholder: 'Current Bill Total Amount' ,required: :true %>
       </div>
     </div>
   </div>
