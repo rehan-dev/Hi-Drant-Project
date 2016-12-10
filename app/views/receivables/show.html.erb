@@ -1,56 +1,69 @@
-<div class="row">
-  <div class="col-md-8">
-    <h1>Review Receivable Record</h1>
-  </div>
-  <div class="col-md-4 m-t-l text-center">
-    <%= link_to '<< Back', receivables_path, class: "btn-info form-control pull-right", style: "width:100px;" %>
-  </div>
-</div>
-<hr>
-<div class="row form-group">
-  <div class="col-md-3">
-    <h3>Company</h3>
-    <input type="text" value="<%= Company.where(id: @receivable.company_id).pluck(:company_name).join(" ") %>" class="form-control" disabled>
-  </div>
-  <div class="col-md-3">
-    <h3>Bill No</h3>
-    <input type="text" value="<%= @receivable.bill_no %>" class="form-control" disabled>
-  </div>
-  <div class="col-md-3">
-    <h3>Receivable Amount</h3>
-    <input type="text" value="<%= @receivable.receiveable_amount %>" class="form-control" disabled>
-  </div>
-  <div class="col-md-3">
-    <h3>Check Date</h3>
-    <input type="text" value="<%= @receivable.check_date %>" class="form-control" disabled>
-  </div>
-</div>
-<div class="row form-group">
-  <div class="col-md-3">
-    <h3>Transaction Date</h3>
-    <input type="text" value="<%= @receivable.transaction_date %>" class="form-control" disabled>
-  </div>
-  <div class="col-md-4">
-    <h3>Remarks</h3>
-    <textarea cols="45" rows="3" class="form-control" disabled><%= @receivable.remarks %></textarea>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-2">
-    &nbsp;
-  </div>
-  <div class="col-md-4 m-t-m text-center">
-    <div class="actions">
-      <%= link_to 'Edit', edit_receivable_path(@receivable), class: "btn-success form-control" %>
+<div class="main-header non-printable">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= link_to image_tag('logo.png', alt: 'Water HY-Drant Project'), root_path %>
+        <p id="notice">
+          <%= notice %>
+        </p>
+      </div>
     </div>
-  </div>
-  <div class="col-md-4 m-t-m text-center">
-    <div class="action">
-      <%= link_to 'Destroy', params[:id], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-danger form-control" %>
+    <br>
+    <div class="row">
+      <div class="col-md-8">
+        <h1>Review Receivable Record</h1>
+      </div>
+      <div class="col-md-4 m-t-l text-center">
+        <%= link_to '<< Back', receivables_path, class: "btn-info form-control pull-right", style: "width:100px;" %>
+      </div>
     </div>
-  </div>
-  <div class="col-md-2">
-    &nbsp;
+    <hr>
+    <div class="row form-group">
+      <div class="col-md-3">
+        <h3>Company</h3>
+        <input type="text" value="<%= Company.where(id: @receivable.company_id).pluck(:company_name).join(" ") %>" class="form-control" disabled>
+      </div>
+      <div class="col-md-3">
+        <h3>Bill No</h3>
+        <input type="text" value="<%= @receivable.bill_no %>" class="form-control" disabled>
+      </div>
+      <div class="col-md-3">
+        <h3>Receivable Amount</h3>
+        <input type="text" value="<%= @receivable.receiveable_amount %>" class="form-control" disabled>
+      </div>
+      <div class="col-md-3">
+        <h3>Check Date</h3>
+        <input type="text" value="<%= @receivable.check_date %>" class="form-control" disabled>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-3">
+        <h3>Transaction Date</h3>
+        <input type="text" value="<%= @receivable.transaction_date %>" class="form-control" disabled>
+      </div>
+      <div class="col-md-4">
+        <h3>Remarks</h3>
+        <textarea cols="45" rows="3" class="form-control" disabled><%= @receivable.remarks %></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        &nbsp;
+      </div>
+      <div class="col-md-4 m-t-m text-center">
+        <div class="actions">
+          <%= link_to 'Edit', edit_receivable_path(@receivable), class: "btn-success form-control" %>
+        </div>
+      </div>
+      <div class="col-md-4 m-t-m text-center">
+        <div class="action">
+          <%= link_to 'Destroy', params[:id], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-danger form-control" %>
+        </div>
+      </div>
+      <div class="col-md-2">
+        &nbsp;
+      </div>
+    </div>
+    <br>
   </div>
 </div>
-<br>

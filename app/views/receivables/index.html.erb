@@ -1,39 +1,52 @@
-<div class="row">
-  <div class="col-md-4">
-    <h1>Receivables</h1>
-  </div>
-  <div class="col-md-4">
+<div class="main-header non-printable">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= link_to image_tag('logo.png', alt: 'Water HY-Drant Project'), root_path %>
+        <p id="notice">
+          <%= notice %>
+        </p>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-4">
+        <h1>Receivables</h1>
+      </div>
+      <div class="col-md-4">
 
-  </div>
-  <div class="col-md-4 m-t-m text-center">
-    <%= link_to '+ New Receiveable Entry', new_receivable_path, class: "btn-success form-control pull-right", style: "width:200px;" %>
+      </div>
+      <div class="col-md-4 m-t-m text-center">
+        <%= link_to '+ New Receiveable Entry', new_receivable_path, class: "btn-success form-control pull-right", style: "width:200px;" %>
+      </div>
+    </div>
+
+    <table id="receivables" class="display">
+      <thead>
+      <tr>
+        <th>Company</th>
+        <th>Bill No</th>
+        <th>Receiveable amount</th>
+        <th>Check date</th>
+        <th>Transaction date</th>
+        <th>Remarks</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @receivables.each do |receivable| %>
+          <tr>
+            <td><%= link_to Company.where(id: receivable.company_id).pluck(:company_name).join(" "), receivable %></td>
+            <td><%= link_to receivable.bill_no, receivable %></td>
+            <td><%= link_to receivable.receiveable_amount, receivable %></td>
+            <td><%= link_to receivable.check_date.present? ? receivable.check_date : '', receivable %></td>
+            <td><%= link_to receivable.transaction_date.present? ? receivable.transaction_date : '', receivable %></td>
+            <td><%= link_to receivable.remarks.present? ? receivable.remarks : '', receivable %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <br>
   </div>
 </div>
-
-<table id="receivables" class="display">
-  <thead>
-    <tr>
-      <th>Company</th>
-      <th>Bill No</th>
-      <th>Receiveable amount</th>
-      <th>Check date</th>
-      <th>Transaction date</th>
-      <th>Remarks</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @receivables.each do |receivable| %>
-      <tr>
-        <td><%= link_to Company.where(id: receivable.company_id).pluck(:company_name).join(" "), receivable %></td>
-        <td><%= link_to receivable.bill_no, receivable %></td>
-        <td><%= link_to receivable.receiveable_amount, receivable %></td>
-        <td><%= link_to receivable.check_date.present? ? receivable.check_date : '', receivable %></td>
-        <td><%= link_to receivable.transaction_date.present? ? receivable.transaction_date : '', receivable %></td>
-        <td><%= link_to receivable.remarks.present? ? receivable.remarks : '', receivable %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>

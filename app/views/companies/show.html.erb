@@ -1,42 +1,55 @@
-<div class="row">
-  <div class="col-md-8">
-    <h1>Review Company Record</h1>
-  </div>
-  <div class="col-md-4 m-t-l text-center">
-    <%= link_to '<< Back', companies_path, class: "btn-info form-control pull-right", style: "width:100px;" %>
+<div class="main-header non-printable">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= link_to image_tag('logo.png', alt: 'Water HY-Drant Project'), root_path %>
+        <p id="notice">
+          <%= notice %>
+        </p>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-8">
+        <h1>Review Company Record</h1>
+      </div>
+      <div class="col-md-4 m-t-l text-center">
+        <%= link_to '<< Back', companies_path, class: "btn-info form-control pull-right", style: "width:100px;" %>
+      </div>
+    </div>
+    <hr>
+    <div class="row form-group">
+      <div class="col-md-3">
+        <h3>Company Name</h3>
+        <input type="text" value="<%= @company.company_name %>" class="form-control" disabled>
+      </div>
+      <div class="col-md-3">
+        <h3>Company Address</h3>
+        <textarea class="form-control" disabled><%= @company.company_address %></textarea>
+      </div>
+      <div class="col-md-3">
+        <h3>Contact No #</h3>
+        <input type="text" value="<%= @company.contact_no %>" class="form-control" disabled>
+      </div>
+      <div class="col-md-3">
+        <h3>Company Reference</h3>
+        <input type="text" value="<%= @company.company_reference %>" class="form-control" disabled>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-3">
+        <h3>Total Bill Amount</h3>
+        <input type="text" value="<%= number_to_currency(@company.total_bill_amount, precision: 2, unit: 'PKR ') %>" class="form-control" disabled>
+      </div>
+      <div class="col-md-3">
+        <h3>Received Amount</h3>
+        <input type="text" value="<%= number_to_currency(@company.received_amount, precision: 2, unit: 'PKR ')  %>" class="form-control" disabled>
+      </div>
+      <div class="col-md-3">
+        <h3>Balance Amount</h3>
+        <input type="text" value="<%= number_to_currency(@company.total_bill_amount - @company.received_amount, precision: 2, unit: 'PKR ')  %>" class="form-control" disabled>
+      </div>
+    </div>
+    <br>
   </div>
 </div>
-<hr>
-<div class="row form-group">
-  <div class="col-md-3">
-    <h3>Company Name</h3>
-    <input type="text" value="<%= @company.company_name %>" class="form-control" disabled>
-  </div>
-  <div class="col-md-3">
-    <h3>Company Address</h3>
-    <textarea class="form-control" disabled><%= @company.company_address %></textarea>
-  </div>
-  <div class="col-md-3">
-    <h3>Contact No #</h3>
-    <input type="text" value="<%= @company.contact_no %>" class="form-control" disabled>
-  </div>
-  <div class="col-md-3">
-    <h3>Company Reference</h3>
-    <input type="text" value="<%= @company.company_reference %>" class="form-control" disabled>
-  </div>
-</div>
-<div class="row form-group">
-  <div class="col-md-3">
-    <h3>Total Bill Amount</h3>
-    <input type="text" value="<%= number_to_currency(@company.total_bill_amount, precision: 2, unit: 'PKR ') %>" class="form-control" disabled>
-  </div>
-  <div class="col-md-3">
-    <h3>Received Amount</h3>
-    <input type="text" value="<%= number_to_currency(@company.received_amount, precision: 2, unit: 'PKR ')  %>" class="form-control" disabled>
-  </div>
-  <div class="col-md-3">
-    <h3>Balance Amount</h3>
-    <input type="text" value="<%= number_to_currency(@company.total_bill_amount - @company.received_amount, precision: 2, unit: 'PKR ')  %>" class="form-control" disabled>
-  </div>
-</div>
-<br>

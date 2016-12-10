@@ -10,20 +10,6 @@
   </head>
 
   <body>
-  <div class="main-header">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <%= link_to image_tag('logo.png', alt: 'Water HY-Drant Project'), root_path %>
-          <h1>Water HY-Drant Project</h1>
-          <p id="notice">
-            <%= notice %>
-          </p>
-        </div>
-      </div>
-      <br>
-      <%= yield %>
-    </div>
-  </div>
+  <%= yield %>
   </body>
 </html>

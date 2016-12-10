@@ -1,73 +1,86 @@
-<div class="row">
-  <div class="col-md-8">
-    <h1>Review Bill Entries</h1>
-  </div>
-  <div class="col-md-4 m-t-l text-center">
-    <%= link_to '<< Back', billentries_path, class: "btn-info form-control pull-right", style: "width:100px;" %>
-  </div>
-</div>
-<div class="row form-group">
-  <div class="col-md-3">
-    <h3>Truck No</h3>
-    <input type="text" value="<%= Truck.where(id: @billentry.truck_no).pluck(:truck_no).flatten.join(' ') %>" class="form-control" disabled>
-  </div>
-  <div class="col-md-3">
-    <h3>Company Name</h3>
-    <input type="text" value="<%= Company.where(id: @billentry.company_id).pluck(:company_name).flatten.join(' ') %>" class="form-control" disabled>
-  </div>
-  <div class="col-md-3">
-    <h3>Address</h3>
-    <textarea class="form-control" disabled><%= @billentry.address %></textarea>
-  </div>
-  <div class="col-md-3">
-    <h3>Time Arrive</h3>
-    <input type="text" value="<%= @billentry.time_arrive %>" class="form-control" disabled>
-  </div>
-</div>
-<div class="row form-group">
-  <div class="col-md-3">
-    <h3>Time Departure</h3>
-    <input type="text" value="<%= @billentry.time_departure %>" class="form-control" disabled>
-  </div>
-  <div class="col-md-3">
-    <h3>Current Date</h3>
-    <input type="text" value="<%= @billentry.current_date %>" class="form-control" disabled>
-  </div>
-  <div class="col-md-3">
-    <h3>Supply Rate</h3>
-    <input type="text" value="<%= number_to_currency(@billentry.supply_rate, precision: 2, unit:'') %>" class="form-control" disabled>
-  </div>
-  <div class="col-md-3">
-    <h3>Capacity</h3>
-    <input type="text" value="<%= number_to_currency(@billentry.capacity, precision: 2, unit:'LTR ') %>" class="form-control" disabled>
-  </div>
-</div>
-<div class="row form-group">
-  <div class="col-md-3">
-    <h3>Previous Amount</h3>
-    <input type="text" value="<%= number_to_currency(@billentry.previous_balance, precision: 2, unit: 'PKR ') %>" class="form-control" disabled>
-  </div>
-  <div class="col-md-3">
-    <h3>Total Amount</h3>
-    <input type="text" value="<%= number_to_currency(@billentry.total_amount, precision: 2, unit: 'PKR ') %>" class="form-control" disabled>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-2">
-    &nbsp;
-  </div>
-  <div class="col-md-4 m-t-m text-center">
-    <div class="actions">
-      <%= link_to 'Edit', edit_billentry_path(@billentry), class: "btn-success form-control" %>
+<div class="main-header non-printable">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= link_to image_tag('logo.png', alt: 'Water HY-Drant Project'), root_path %>
+        <p id="notice">
+          <%= notice %>
+        </p>
+      </div>
     </div>
-  </div>
-  <div class="col-md-4 m-t-m text-center">
-    <div class="action">
-      <%= link_to 'Destroy', params[:id], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-danger form-control" %>
+    <br>
+    <div class="row">
+      <div class="col-md-8">
+        <h1>Review Bill Entries</h1>
+      </div>
+      <div class="col-md-4 m-t-l text-center">
+        <%= link_to '<< Back', billentries_path, class: "btn-info form-control pull-right", style: "width:100px;" %>
+      </div>
     </div>
-  </div>
-  <div class="col-md-2">
-    &nbsp;
+    <div class="row form-group">
+      <div class="col-md-3">
+        <h3>Truck No</h3>
+        <input type="text" value="<%= Truck.where(id: @billentry.truck_no).pluck(:truck_no).flatten.join(' ') %>" class="form-control" disabled>
+      </div>
+      <div class="col-md-3">
+        <h3>Company Name</h3>
+        <input type="text" value="<%= Company.where(id: @billentry.company_id).pluck(:company_name).flatten.join(' ') %>" class="form-control" disabled>
+      </div>
+      <div class="col-md-3">
+        <h3>Address</h3>
+        <textarea class="form-control" disabled><%= @billentry.address %></textarea>
+      </div>
+      <div class="col-md-3">
+        <h3>Time Arrive</h3>
+        <input type="text" value="<%= @billentry.time_arrive %>" class="form-control" disabled>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-3">
+        <h3>Time Departure</h3>
+        <input type="text" value="<%= @billentry.time_departure %>" class="form-control" disabled>
+      </div>
+      <div class="col-md-3">
+        <h3>Current Date</h3>
+        <input type="text" value="<%= @billentry.current_date %>" class="form-control" disabled>
+      </div>
+      <div class="col-md-3">
+        <h3>Supply Rate</h3>
+        <input type="text" value="<%= number_to_currency(@billentry.supply_rate, precision: 2, unit:'') %>" class="form-control" disabled>
+      </div>
+      <div class="col-md-3">
+        <h3>Capacity</h3>
+        <input type="text" value="<%= number_to_currency(@billentry.capacity, precision: 2, unit:'LTR ') %>" class="form-control" disabled>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-3">
+        <h3>Previous Amount</h3>
+        <input type="text" value="<%= number_to_currency(@billentry.previous_balance, precision: 2, unit: 'PKR ') %>" class="form-control" disabled>
+      </div>
+      <div class="col-md-3">
+        <h3>Total Amount</h3>
+        <input type="text" value="<%= number_to_currency(@billentry.total_amount, precision: 2, unit: 'PKR ') %>" class="form-control" disabled>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        &nbsp;
+      </div>
+      <div class="col-md-4 m-t-m text-center">
+        <div class="actions">
+          <%= link_to 'Edit', edit_billentry_path(@billentry), class: "btn-success form-control" %>
+        </div>
+      </div>
+      <div class="col-md-4 m-t-m text-center">
+        <div class="action">
+          <%= link_to 'Destroy', params[:id], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-danger form-control" %>
+        </div>
+      </div>
+      <div class="col-md-2">
+        &nbsp;
+      </div>
+    </div>
+    <br>
   </div>
 </div>
-<br>

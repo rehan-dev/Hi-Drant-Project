@@ -1,52 +1,66 @@
-<div class="row">
-  <div class="col-md-8">
-    <h1>Review Trucks Record</h1>
-  </div>
-  <div class="col-md-4 m-t-l text-center">
-    <%= link_to '<< Back', trucks_path, class: "btn-info form-control pull-right", style: "width:100px;" %>
-  </div>
-</div>
-<hr>
-<div class="row form-group">
-  <div class="col-md-4">
-    <h3>Truck No #</h3>
-    <input type="text" value="<%= @truck.truck_no %>" style="text-transform: uppercase;" class="form-control" disabled>
-  </div>
-  <div class="col-md-4">
-    <h3>Truck Driver Name</h3>
-    <input type="text" value="<%= @truck.truck_driver %>" class="form-control" disabled>
-  </div>
-  <div class="col-md-4">
-    <h3>Driver No #</h3>
-    <input type="text" value="<%= @truck.driver_no %>" class="form-control" disabled>
-  </div>
-</div>
-<div class="row form-group">
-  <div class="col-md-4">
-    <h3>Day Start</h3>
-    <input type="text" value="<%= @truck.day_start %>" class="form-control" disabled>
-  </div>
-  <div class="col-md-4">
-    <h3>Day off</h3>
-    <input type="text" value="<%= @truck.day_off %>" class="form-control" disabled>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-2">
-    &nbsp;
-  </div>
-  <div class="col-md-4 m-t-m text-center">
-    <div class="actions">
-      <%= link_to 'Edit', edit_truck_path(@truck), class: "btn-success form-control" %>
+<div class="main-header non-printable">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= link_to image_tag('logo.png', alt: 'Water HY-Drant Project'), root_path %>
+        <p id="notice">
+          <%= notice %>
+        </p>
+      </div>
     </div>
-  </div>
-  <div class="col-md-4 m-t-m text-center">
-    <div class="action">
-      <%= link_to 'Destroy', params[:id], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-danger form-control" %>
+    <br>
+    <div class="row">
+      <div class="col-md-8">
+        <h1>Review Trucks Record</h1>
+      </div>
+      <div class="col-md-4 m-t-l text-center">
+        <%= link_to '<< Back', trucks_path, class: "btn-info form-control pull-right", style: "width:100px;" %>
+      </div>
     </div>
-  </div>
-  <div class="col-md-2">
-    &nbsp;
+    <hr>
+    <div class="row form-group">
+      <div class="col-md-4">
+        <h3>Truck No #</h3>
+        <input type="text" value="<%= @truck.truck_no %>" style="text-transform: uppercase;" class="form-control" disabled>
+      </div>
+      <div class="col-md-4">
+        <h3>Truck Driver Name</h3>
+        <input type="text" value="<%= @truck.truck_driver %>" class="form-control" disabled>
+      </div>
+      <div class="col-md-4">
+        <h3>Driver No #</h3>
+        <input type="text" value="<%= @truck.driver_no %>" class="form-control" disabled>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-4">
+        <h3>Day Start</h3>
+        <input type="text" value="<%= @truck.day_start %>" class="form-control" disabled>
+      </div>
+      <div class="col-md-4">
+        <h3>Day off</h3>
+        <input type="text" value="<%= @truck.day_off %>" class="form-control" disabled>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        &nbsp;
+      </div>
+      <div class="col-md-4 m-t-m text-center">
+        <div class="actions">
+          <%= link_to 'Edit', edit_truck_path(@truck), class: "btn-success form-control" %>
+        </div>
+      </div>
+      <div class="col-md-4 m-t-m text-center">
+        <div class="action">
+          <%= link_to 'Destroy', params[:id], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-danger form-control" %>
+        </div>
+      </div>
+      <div class="col-md-2">
+        &nbsp;
+      </div>
+    </div>
+    <br>
+
   </div>
 </div>
-<br>

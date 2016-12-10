@@ -1,50 +1,65 @@
-<div class="row">
-  <div class="col-md-3 text-center">
-    <%= link_to trucks_path, 'data-no-turbolink' => true do %>
-      <div class="truck-module">
+<div class="main-header non-printable">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= link_to image_tag('logo.png', alt: 'Water HY-Drant Project'), root_path %>
+        <p id="notice">
+          <%= notice %>
+        </p>
       </div>
-      <h3 class="truck-text">Truck Entry</h3>
-    <% end %>
-  </div>
-  <div class="col-md-3 text-center">
-    <%= link_to companies_path do %>
-      <div class="cc-module">
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-3 text-center">
+        <%= link_to trucks_path, 'data-no-turbolink' => true do %>
+            <div class="truck-module">
+            </div>
+            <h3 class="truck-text">Truck Entry</h3>
+        <% end %>
       </div>
-      <h3 class="cc-text">Company Entry</h3>
-    <% end %>
-  </div>
-  <div class="col-md-3 text-center">
-    <%=link_to billentries_path do %>
-    <div class="bill-module">
+      <div class="col-md-3 text-center">
+        <%= link_to companies_path do %>
+            <div class="cc-module">
+            </div>
+            <h3 class="cc-text">Company Entry</h3>
+        <% end %>
+      </div>
+      <div class="col-md-3 text-center">
+        <%=link_to billentries_path do %>
+            <div class="bill-module">
+            </div>
+            <h3 class="bill-text">Bill Entry</h3>
+        <% end %>
+      </div>
+      <div class="col-md-3 text-center">
+        <%=link_to receivables_path do %>
+            <div class="receiveable-module">
+            </div>
+            <h3 class="receiveable-text">Amount Entry</h3>
+        <% end %>
+      </div>
     </div>
-    <h3 class="bill-text">Bill Entry</h3>
-    <% end %>
-  </div>
-  <div class="col-md-3 text-center">
-    <%=link_to receivables_path do %>
-    <div class="receiveable-module">
+
+    <div class="row">
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-3 text-center m-t-m">
+        <%= link_to reports_path do %>
+            <div class="report-module">
+            </div>
+            <h3 class="report-text">Reports</h3>
+        <% end %>
+      </div>
+      <div class="col-md-3 m-t-m text-center">
+        <%= link_to destroy_user_session_path, method: :delete do %>
+            <div class="exit">
+            </div>
+        <% end %>
+        <h3 class="exit-text">Exit</h3>
+      </div>
+      <div class="col-md-3">
+      </div>
     </div>
-    <h3 class="receiveable-text">Amount Entry</h3>
-    <% end %>
+
   </div>
 </div>
-
-  <div class="row">
-    <div class="col-md-3">
-
-    </div>
-    <div class="col-md-3 text-center m-t-m">
-      <div class="report-module">
-      </div>
-      <h3 class="report-text">Reports</h3>
-    </div>
-    <div class="col-md-3 m-t-m text-center">
-      <%= link_to destroy_user_session_path, method: :delete do %>
-        <div class="exit">
-        </div>
-      <% end %>
-      <h3 class="exit-text">Exit</h3>
-    </div>
-    <div class="col-md-3">
-    </div>
-  </div>

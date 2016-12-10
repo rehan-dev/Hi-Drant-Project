@@ -1,0 +1,113 @@
+<!--<div class="main-header">-->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1 class="bold">JAN & CO</h1>
+      </div>
+    </div>
+    <br>
+    <% if @bill_data == [] %>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h2>No Data Found OR Not exist</h2>
+          </div>
+        </div>
+    <% else %>
+        <div class="row">
+          <div class="col-md-4">
+            <strong id="comp_name" class="large-text"><%= @bill_name.flatten.join(' ') %></strong>
+            <br>
+            <br>
+            <p id="comp_address" class="small-text"><%= @bill_data[0].address %></p>
+            <p class="small-text">Phone #: <%= Company.where(secure: true, user_id: current_user.id, id: @bill_data[0].company_id).pluck(:contact_no).flatten.join(' ') %></p>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4 text-center">
+            <strong id="comp_name" class="large-text">BILL REPORT</strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <strong class="main-text">Date:&nbsp;</strong>
+            <strong id="comp_name" class="under small-text"><%= Date.current.to_formatted_s(:long_ordinal) %></strong>
+            &nbsp;
+            <strong class="main-text">Customer ID:&nbsp;</strong>
+            <strong id="comp_name" class="under small-text"><%= @bill_data[0].company_id %></strong>
+            &nbsp;
+            <strong class="main-text">User ID:&nbsp;</strong>
+            <strong id="comp_name" class="under small-text"><%= @bill_data[0].user_id %></strong>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="container">
+            <table class="table table-bordered">
+              <thead>
+              <tr class="first_head_row">
+                <th>Bill No</th>
+                <th>Bill Date</th>
+                <th>Truck No</th>
+                <th>Time Start</th>
+                <th>Time End</th>
+                <th>Supply Rate</th>
+                <th>Capacity</th>
+                <th>Bill Amount</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @bill_data.each do |data| %>
+                  <tr>
+                    <td><%= data.id %></td>
+                    <td><%= data.current_date.to_formatted_s(:long_ordinal) %></td>
+                    <td><%= Truck.where(secure: true, user_id: current_user.id, id: data.truck_no).pluck(:truck_no).flatten.join(' ') %></td>
+                    <td><%= data.time_arrive %></td>
+                    <td><%= data.time_departure %></td>
+                    <td><%= data.supply_rate %></td>
+                    <td><%= data.capacity %></td>
+                    <td><%= number_to_currency(data.total_amount, precision: 2, unit: '') %></td>
+                  </tr>
+              <% end %>
+                <tr class="last_row">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="bold">Bill Total Amount</td>
+                  <td><%= number_to_currency(@bill_data.sum(:total_amount), precision: 2, unit: 'PKR ') %></td>
+                </tr>
+              <tr class="last_row">
+                <td></td>
+                <td>Total Received Amount</td>
+                <td><%= number_to_currency(@bill_data.sum(:received_amount), precision: 2, unit: 'PKR ')%></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="bold">Previous Balance</td>
+                <td><%= number_to_currency(@bill_data.sum(:total_amount) - @bill_data.sum(:received_amount), precision: 2, unit: 'PKR ') %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!--<div class="row">-->
+          <!--<div class="col-md-4">-->
+            <!--<strong>Total Received Amount:&nbsp;</strong>-->
+            <!--<input type="text" value="<%= number_to_currency(@bill_data.sum(:received_amount), precision: 2, unit: 'PKR ')%>" size="19" class="amount" readonly>-->
+          <!--</div>-->
+          <!--<div class="col-md-4 text-right">-->
+            <!--<strong>Previous Balance:&nbsp;</strong>-->
+            <!--<input type="text" value="<%= number_to_currency(@bill_data.sum(:total_amount) - @bill_data.sum(:received_amount), precision: 2, unit: 'PKR ') %>" size="19" class="amount" readonly>-->
+          <!--</div>-->
+          <!--<div class="col-md-4 text-right">-->
+            <!--<strong>Current Total Amount:&nbsp;</strong>-->
+            <!--<input type="text" value="<%= number_to_currency(@bill_data.sum(:total_amount), precision: 2, unit: 'PKR ') %>" size="19" class="amount" readonly>-->
+          <!--</div>-->
+        <!--</div>-->
+    <% end %>
+    <br>
+  </div>
+<!--</div>-->

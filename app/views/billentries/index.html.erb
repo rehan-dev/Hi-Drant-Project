@@ -1,49 +1,63 @@
-<div class="row">
-  <div class="col-md-4">
-    <h1>Billentries</h1>
-  </div>
-  <div class="col-md-4">
+<div class="main-header non-printable">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= link_to image_tag('logo.png', alt: 'Water HY-Drant Project'), root_path %>
+        <p id="notice">
+          <%= notice %>
+        </p>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-4">
+        <h1>Billentries</h1>
+      </div>
+      <div class="col-md-4">
 
-  </div>
-  <div class="col-md-4 m-t-m text-center">
-    <%= link_to '+ New Billentry', new_billentry_path, class: "btn-success form-control pull-right", style: "width:200px;" %>
+      </div>
+      <div class="col-md-4 m-t-m text-center">
+        <%= link_to '+ New Billentry', new_billentry_path, class: "btn-success form-control pull-right", style: "width:200px;" %>
+      </div>
+    </div>
+    <hr>
+    <table class="display" id="billentries">
+      <thead>
+      <tr>
+        <th>Bill No</th>
+        <th>Company name</th>
+        <th>Time arrive</th>
+        <th>Time departure</th>
+        <th>Current date</th>
+        <th>Supply rate</th>
+        <th>Capacity</th>
+        <th>Previous Balance</th>
+        <th>Total amount</th>
+        <th>Received Amount</th>
+        <th>Net Balance</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @billentries.each do |billentry| %>
+          <tr>
+            <td><%=link_to billentry.id, billentry %></td>
+            <td><%=link_to Company.where(id: billentry.company_id).pluck(:company_name).flatten.join(' '), billentry %></td>
+            <td><%=link_to billentry.time_arrive, billentry %></td>
+            <td><%=link_to billentry.time_departure, billentry %></td>
+            <td><%=link_to billentry.current_date, billentry %></td>
+            <td><%=link_to number_to_currency(billentry.supply_rate, precision: 2, unit: ''), billentry %></td>
+            <td><%=link_to number_to_currency(billentry.capacity, precision: 2, unit: 'LTR '), billentry %></td>
+            <td><%=link_to number_to_currency(billentry.previous_balance, precision: 2, unit: 'PKR '), billentry %></td>
+            <td><%=link_to number_to_currency(billentry.total_amount.present? ? billentry.total_amount : 0, precision: 2, unit: 'PKR '), billentry %></td>
+            <td><%=link_to number_to_currency(billentry.received_amount.present? ? billentry.received_amount : 0 , precision: 2, unit: 'PKR '), billentry %></td>
+            <td><%=link_to number_to_currency((billentry.total_amount.present? ? billentry.total_amount : 0) - (billentry.received_amount.present? ? billentry.received_amount : 0), precision: 2, unit: 'PKR '), billentry %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <br>
+
+
   </div>
 </div>
-<hr>
-<table class="display" id="billentries">
-  <thead>
-    <tr>
-      <th>Bill No</th>
-      <th>Company name</th>
-      <th>Time arrive</th>
-      <th>Time departure</th>
-      <th>Current date</th>
-      <th>Supply rate</th>
-      <th>Capacity</th>
-      <th>Previous Balance</th>
-      <th>Total amount</th>
-      <th>Received Amount</th>
-      <th>Net Balance</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @billentries.each do |billentry| %>
-      <tr>
-        <td><%=link_to billentry.id, billentry %></td>
-        <td><%=link_to Company.where(id: billentry.company_id).pluck(:company_name).flatten.join(' '), billentry %></td>
-        <td><%=link_to billentry.time_arrive, billentry %></td>
-        <td><%=link_to billentry.time_departure, billentry %></td>
-        <td><%=link_to billentry.current_date, billentry %></td>
-        <td><%=link_to number_to_currency(billentry.supply_rate, precision: 2, unit: ''), billentry %></td>
-        <td><%=link_to number_to_currency(billentry.capacity, precision: 2, unit: 'LTR '), billentry %></td>
-        <td><%=link_to number_to_currency(billentry.previous_balance, precision: 2, unit: 'PKR '), billentry %></td>
-        <td><%=link_to number_to_currency(billentry.total_amount.present? ? billentry.total_amount : 0, precision: 2, unit: 'PKR '), billentry %></td>
-        <td><%=link_to number_to_currency(billentry.received_amount.present? ? billentry.received_amount : 0 , precision: 2, unit: 'PKR '), billentry %></td>
-        <td><%=link_to number_to_currency((billentry.total_amount.present? ? billentry.total_amount : 0) - (billentry.received_amount.present? ? billentry.received_amount : 0), precision: 2, unit: 'PKR '), billentry %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
-

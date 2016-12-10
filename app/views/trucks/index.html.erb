@@ -1,37 +1,51 @@
-<div class="row">
-  <div class="col-md-4">
-    <h1>Manage Trucks</h1>
-  </div>
-  <div class="col-md-4">
+<div class="main-header non-printable">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= link_to image_tag('logo.png', alt: 'Water HY-Drant Project'), root_path %>
+        <p id="notice">
+          <%= notice %>
+        </p>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-4">
+        <h1>Manage Trucks</h1>
+      </div>
+      <div class="col-md-4">
 
-  </div>
-  <div class="col-md-4 m-t-m text-center">
-    <%= link_to '+ New Truck Entry', new_truck_path, class: "btn-success form-control pull-right", style: "width:160px;" %>
+      </div>
+      <div class="col-md-4 m-t-m text-center">
+        <%= link_to '+ New Truck Entry', new_truck_path, class: "btn-success form-control pull-right", style: "width:160px;" %>
+      </div>
+    </div>
+    <table class="display" id="trucks_record">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Truck no</th>
+        <th>Truck driver</th>
+        <th>Driver no</th>
+        <th>Day start</th>
+        <th>Day off</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @trucks.each do |truck| %>
+          <tr>
+            <td><%= link_to truck.id, truck %></td>
+            <td style="text-transform: uppercase;"><%= link_to truck.truck_no, truck%></td>
+            <td><%= link_to truck.truck_driver, truck %></td>
+            <td><%= link_to truck.driver_no, truck %></td>
+            <td><%= link_to truck.day_start, truck %></td>
+            <td><%= link_to truck.day_off, truck %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <br>
+
   </div>
 </div>
-<table class="display" id="trucks_record">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Truck no</th>
-      <th>Truck driver</th>
-      <th>Driver no</th>
-      <th>Day start</th>
-      <th>Day off</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @trucks.each do |truck| %>
-      <tr>
-        <td><%= link_to truck.id, truck %></td>
-        <td style="text-transform: uppercase;"><%= link_to truck.truck_no, truck%></td>
-        <td><%= link_to truck.truck_driver, truck %></td>
-        <td><%= link_to truck.driver_no, truck %></td>
-        <td><%= link_to truck.day_start, truck %></td>
-        <td><%= link_to truck.day_off, truck %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>

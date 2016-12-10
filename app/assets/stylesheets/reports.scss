@@ -1,3 +1,95 @@
 // Place all the styles related to the Reports controller here.
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$h3_color: #777777;
+//@media print
+//{
+//  .non-printable { display: none; }
+//  .printable {
+//    display: block;
+//  }
+//}
+.inline
+{
+  display: inline-flex;
+}
+
+.bold{
+  font-weight: 900;
+}
+
+.under{
+  text-decoration: underline;
+}
+
+.small-text{
+  font-size: large;
+  font-weight: 100;
+}
+
+.large-text{
+  font-size: 2.3em;
+  font-weight: 900;
+}
+
+.error{
+  background-color: red;
+  h2#error_log{
+    color: white;
+    text-transform: uppercase;
+  }
+}
+.amount{
+  border: 2px solid;
+  border-radius: 7px;
+  font-weight: 600;
+  padding: 2px;
+}
+.main-text {
+  font-size: large;
+}
+
+.billentry-module{
+  background-image: image-url('reporting.png');
+  background-repeat: no-repeat;
+  background-size: 118px;
+  background-position-x: 66px;
+  background-position-y: 4px;
+  background-color: #f2f2f2;
+  margin-bottom: 20px;
+  height: 124px;
+  margin-left: 20px;
+  border-radius: 1px;
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 2px 14px 0 rgba(0, 0, 0, 0.06);
+}
+.billentry-module:hover{
+  background-color: gainsboro;
+}
+.billentry-text{
+  font-size: 1.7em;
+  font-weight: 800;
+  color: $h3_color;
+}
+
+.last_row {
+  background: darkgray;
+  color: black;
+  font-weight: 900;
+  text-align: center;
+  border-style: inset;
+  border-top-width: thick;
+}
+.first_head_row {
+  background: darkgray;
+  color: black;
+  text-align: center;
+  text-transform: uppercase;
+  border-style: inset;
+  border-top-width: thick;
+}
+
+#comp_address{
+  width: 275px;
+  //border: 1px solid #000000;
+  word-break: break-all;
+}

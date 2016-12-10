@@ -1,10 +1,23 @@
-<div class="row">
-  <div class="col-md-8">
-    <h1>Edit Receiveable Record</h1>
-  </div>
-  <div class="col-md-4 m-t-l text-center">
-    <%= link_to '<< Back', receivables_path, class: "btn-info form-control pull-right", style: "width:100px;" %>
+<div class="main-header non-printable">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= link_to image_tag('logo.png', alt: 'Water HY-Drant Project'), root_path %>
+        <p id="notice">
+          <%= notice %>
+        </p>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-8">
+        <h1>Edit Receiveable Record</h1>
+      </div>
+      <div class="col-md-4 m-t-l text-center">
+        <%= link_to '<< Back', receivables_path, class: "btn-info form-control pull-right", style: "width:100px;" %>
+      </div>
+    </div>
+    <hr>
+    <%= render 'form', receivable: @receivable %>
   </div>
 </div>
-<hr>
-<%= render 'form', receivable: @receivable %>
